@@ -1,0 +1,5 @@
+{
+  "reactions_v2": [
+    { "timestamp": 1650002000, "title": "Johnny likes Jane's post.", "data": [{ "reaction": { "reaction": "LIKE", "actor": "Johnny" } }] }
+  ]
+}

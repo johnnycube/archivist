@@ -1,0 +1,3 @@
+From,To,Sent At,Message,Direction,inviterProfileUrl,inviteeProfileUrl
+Sam Sample,Jane Doe,"1/31/24, 12:34 PM",Great talk yesterday!,OUTGOING,https://www.linkedin.com/in/sam-sample-example,https://www.linkedin.com/in/jane-doe-example
+Rita Recruiter,Sam Sample,"11/2/23, 7:05 AM",,INCOMING,https://www.linkedin.com/in/rita-recruiter-example,https://www.linkedin.com/in/sam-sample-example

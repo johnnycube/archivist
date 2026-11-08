@@ -1,0 +1,41 @@
+{
+  "id": "11111111-1111-4111-8111-111111111111",
+  "source": "whatsapp",
+  "label": "default",
+  "part_names": [
+    "WhatsApp Chat - Book Club.zip"
+  ],
+  "parts": 1,
+  "archive_bytes": 2048,
+  "status": "error",
+  "attempts": 2,
+  "saved": 7,
+  "bytes_done": 100,
+  "bytes_total": 200,
+  "coverage": {
+    "members": 5,
+    "mapped": 3,
+    "generic": 1,
+    "skipped": 1,
+    "events": 9,
+    "duplicates": 2,
+    "dedupe_truncated": true,
+    "new": 6,
+    "reimported": 1,
+    "media_stored": 4,
+    "truncated": 2,
+    "superseded": 3,
+    "bytes": 4096,
+    "per_type": {
+      "whatsapp.message": 8,
+      "whatsapp.unknown": 1
+    },
+    "generic_members": [
+      "notes.bin"
+    ]
+  },
+  "error": "boom",
+  "cancel_requested": true,
+  "created_at": "2024-03-09T14:30:00.123Z",
+  "updated_at": "2024-03-09T14:31:00.123Z"
+}

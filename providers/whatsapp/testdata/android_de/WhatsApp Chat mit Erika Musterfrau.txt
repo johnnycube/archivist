@@ -1,0 +1,5 @@
+01.04.22, 09:00 - Nachrichten und Anrufe sind Ende-zu-Ende-verschlüsselt. Niemand außerhalb dieses Chats kann sie lesen oder anhören.
+01.04.22, 09:01 - Erika Musterfrau: Hallo
+02.04.22, 10:00 - Max Mustermann: <Medien ausgeschlossen>
+03.04.22, 11:00 - Erika Musterfrau: DOC-20220403-WA0002.pdf (Datei angehängt)
+03.04.22, 11:01 - Max Mustermann: Danke

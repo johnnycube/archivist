@@ -1,0 +1,16 @@
+# Caddy in front of Archivist: HTTPS (certificates from Let's Encrypt,
+# automatically) and nothing else to configure. Copy to /etc/caddy/Caddyfile
+# (or wherever your Caddy reads it), set your host name, and in Archivist's
+# .env:
+#
+#   COOKIE_SECURE=1
+#   TRUSTED_PROXIES=1
+#   PUBLIC_URL=https://archive.example.com
+#
+# Caddy adds X-Forwarded-For and X-Forwarded-Proto itself. Uploads can be
+# gigabytes and take a while: Caddy has no request body limit or read timeout
+# by default, so none is set here; if you add one, keep it above MAX_UPLOAD_MB.
+archive.example.com {
+	encode zstd gzip
+	reverse_proxy 127.0.0.1:8080
+}

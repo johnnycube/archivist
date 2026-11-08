@@ -1,0 +1,38 @@
+[
+  {
+    "uuid": "c1",
+    "name": "Golang interfaces",
+    "summary": "",
+    "model": "claude-3-5-sonnet-20241022",
+    "created_at": "2024-05-01T10:00:00.000000Z",
+    "updated_at": "2024-05-01T10:00:05.000000Z",
+    "account": { "uuid": "acct-1" },
+    "chat_messages": [
+      { "uuid": "m1", "text": "How do interfaces work in Go?", "content": [ { "start_timestamp": "2024-05-01T10:00:00.000000Z", "stop_timestamp": "2024-05-01T10:00:00.000000Z", "type": "text", "text": "How do interfaces work in Go?", "citations": [] } ], "sender": "human", "created_at": "2024-05-01T10:00:00.000000Z", "updated_at": "2024-05-01T10:00:00.000000Z", "attachments": [], "files": [] },
+      { "uuid": "m2", "text": "An interface is a set of method signatures.", "content": [ { "start_timestamp": "2024-05-01T10:00:01.000000Z", "stop_timestamp": "2024-05-01T10:00:05.000000Z", "type": "text", "text": "An interface is a set of method signatures.", "citations": [] } ], "sender": "assistant", "created_at": "2024-05-01T10:00:05.000000Z", "updated_at": "2024-05-01T10:00:05.000000Z", "attachments": [], "files": [] }
+    ]
+  },
+  {
+    "uuid": "c2",
+    "name": "Content fallback",
+    "created_at": "2024-05-02T09:00:00Z",
+    "updated_at": "2024-05-02T09:00:10Z",
+    "chat_messages": [
+      { "uuid": "m3", "sender": "human", "created_at": "2024-05-02T09:00:00Z", "text": "", "content": [ { "type": "text", "text": "Body via content array" } ], "attachments": [ { "file_name": "notes.pdf", "file_size": 2048, "file_type": "pdf", "extracted_content": "Some extracted text" } ], "files": [] },
+      { "uuid": "m4", "sender": "assistant", "created_at": "2024-05-02T09:00:10.500+00:00", "text": "", "content": [ { "type": "tool_use", "name": "web_search", "input": { "query": "x" } }, { "type": "tool_result", "content": [] }, { "type": "text", "text": "Here is what I found." } ], "attachments": [], "files": [] }
+    ]
+  },
+  {
+    "uuid": "c3",
+    "name": "Tree shaped",
+    "created_at": "2025-01-15T10:00:00.000Z",
+    "updated_at": "2025-01-15T10:00:02.000Z",
+    "current_leaf_message_uuid": "t3",
+    "chat_messages": [
+      { "uuid": "t3", "index": 2, "parent_message_uuid": "t2", "sender": "assistant", "text": "Third", "created_at": "2025-01-15T10:00:02.000Z", "content": [], "attachments": [], "files": [] },
+      { "uuid": "t1", "index": 0, "parent_message_uuid": "00000000-0000-4000-8000-000000000000", "sender": "human", "text": "First", "created_at": "2025-01-15T10:00:00.000Z", "content": [], "attachments": [], "files": [] },
+      { "uuid": "t2", "index": 1, "parent_message_uuid": "t1", "sender": "assistant", "text": "Second", "created_at": "2025-01-15T10:00:01.000Z", "content": [], "attachments": [], "files": [] },
+      { "uuid": "t4", "index": 3, "parent_message_uuid": "t3", "sender": "human", "text": "", "created_at": "2025-01-15T10:00:03.000Z", "content": [], "attachments": [], "files": [ { "file_name": "diagram.png" } ] }
+    ]
+  }
+]

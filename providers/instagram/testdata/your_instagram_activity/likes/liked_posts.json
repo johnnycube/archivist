@@ -1,0 +1,25 @@
+{
+  "likes_media_likes": [
+    {
+      "timestamp": 1750000000,
+      "media": [],
+      "label_values": [
+        { "label": "URL", "value": "https://www.instagram.com/p/CCC/", "href": "https://www.instagram.com/p/CCC/" },
+        {
+          "dict": [
+            {
+              "dict": [
+                { "label": "URL", "value": "https://www.instagram.com/new.format" },
+                { "label": "Name", "value": "New Format" },
+                { "label": "Username", "value": "new.format" }
+              ],
+              "title": ""
+            }
+          ],
+          "title": "Owner"
+        }
+      ],
+      "fbid": "17900000000000001"
+    }
+  ]
+}

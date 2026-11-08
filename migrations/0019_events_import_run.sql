@@ -1,0 +1,12 @@
+-- +goose Up
+-- (Migration-runner annotation. No Down section: migrations are forward-only.
+-- The runner wraps this file in a transaction.)
+--
+-- Which run of its import last wrote an event. A reprocess re-derives an
+-- import's events from the preserved archive with the current providers; the
+-- events of the import that the run did NOT write — what an improved provider
+-- no longer produces, e.g. a file captured as `<source>.unknown` that now has
+-- a mapper — are then removed (EventRepository.SweepImport), so the timeline
+-- does not show the old and the new form side by side. Existing events have
+-- NULL: the first reprocess of their import treats them as not written by it.
+ALTER TABLE events ADD COLUMN import_run text;

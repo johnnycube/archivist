@@ -1,0 +1,37 @@
+[
+  {
+    "header": "YouTube",
+    "title": "Fahrrad richtig putzen angesehen",
+    "titleUrl": "https://www.youtube.com/watch?v\u003dbbbbbbbbb01",
+    "subtitles": [
+      {
+        "name": "Beispielkanal",
+        "url": "https://www.youtube.com/channel/UCeeeeeeeeeeeeeeeeeeeeee"
+      }
+    ],
+    "time": "2024-04-01T06:00:00.000Z",
+    "products": [
+      "YouTube"
+    ],
+    "activityControls": [
+      "YouTube-Wiedergabeverlauf"
+    ]
+  },
+  {
+    "header": "YouTube",
+    "title": "Beispielwerbung angesehen",
+    "titleUrl": "https://www.youtube.com/watch?v\u003dbbbbbbbbb02",
+    "time": "2024-04-01T05:59:00.000Z",
+    "products": [
+      "YouTube"
+    ],
+    "details": [
+      {
+        "name": "Von Google Anzeigen"
+      }
+    ],
+    "activityControls": [
+      "YouTube-Wiedergabeverlauf"
+    ]
+  }
+]

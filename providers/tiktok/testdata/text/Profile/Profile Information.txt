@@ -1,0 +1,2 @@
+Username: johnny_example
+Bio: Synthetic fixture account

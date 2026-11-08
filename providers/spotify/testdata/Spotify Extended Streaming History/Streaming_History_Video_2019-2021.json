@@ -1,0 +1,23 @@
+[
+  {
+    "ts": "2021-02-02T20:00:00Z",
+    "platform": "android",
+    "ms_played": 600000,
+    "conn_country": "DE",
+    "ip_addr": "203.0.113.7",
+    "master_metadata_track_name": null,
+    "master_metadata_album_artist_name": null,
+    "master_metadata_album_album_name": null,
+    "spotify_track_uri": null,
+    "episode_name": "Video Episode 1",
+    "episode_show_name": "Watchable Podcast",
+    "spotify_episode_uri": "spotify:episode:4444444444444444444444",
+    "reason_start": "trackdone",
+    "reason_end": "trackdone",
+    "shuffle": false,
+    "skipped": false,
+    "offline": false,
+    "offline_timestamp": null,
+    "incognito_mode": false
+  }
+]

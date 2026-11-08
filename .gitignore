@@ -1,0 +1,30 @@
+# Node / SvelteKit
+/frontend/node_modules/
+/frontend/.svelte-kit/
+/frontend/build/
+
+# Local env & secrets
+.env
+
+# Build artifacts / archives
+*.zip
+/archivist
+/server
+/archivist-demo
+/dist
+
+# Go dependencies are not vendored (go.sum pins them)
+/vendor/
+
+# OS / editor cruft
+.DS_Store
+
+# NOTE: internal/webui/dist IS committed on purpose so `go build` works on a
+# fresh clone (//go:embed). Regenerate it with `make web` after UI changes.
+
+# Runtime data (uploads, blobs)
+/data/
+
+# Coverage and tool output (make cover / make mutate)
+/cover.out
+/frontend/coverage/

@@ -1,0 +1,9 @@
+{
+  "Received Saved Chat History": [
+    {"From": "jane_doe", "Media Type": "TEXT", "Created": "2020-05-01 10:00:00 UTC", "Text": "Old style hello"},
+    {"From": "max_mustermann", "Media Type": "TEXT", "Created": "2020-05-01 10:00:00 UTC", "Text": "Old style hello"}
+  ],
+  "Sent Saved Chat History": [
+    {"To": "jane_doe", "Media Type": "TEXT", "Created": "2020-05-01 10:01:00 UTC", "Text": "Old style reply"}
+  ]
+}

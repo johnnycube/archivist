@@ -1,0 +1,3 @@
+id,permalink,date,ip,subreddit,gildings,link,parent,body,media
+c1,https://old.reddit.com/r/golang/comments/aaa/x/c1/,2023-01-15 10:20:30 UTC,203.0.113.7,golang,0,https://old.reddit.com/r/golang/comments/aaa/x/,t3_aaa,"Great write-up, thanks!",
+c2,https://old.reddit.com/r/rust/comments/bbb/y/c2/,2024-03-02 08:00:00 UTC,203.0.113.7,rust,1,https://old.reddit.com/r/rust/comments/bbb/y/,https://old.reddit.com/r/rust/comments/bbb/y/c9/,"Agreed, borrow checker FTW",

@@ -1,0 +1,28 @@
+{
+  "type": "FeatureCollection",
+  "features": [{
+    "geometry": {"coordinates": [13.4050000, 52.5200000], "type": "Point"},
+    "properties": {
+      "Google Maps URL": "http://maps.google.com/?cid=1234567890123456789",
+      "Location": {
+        "Address": "Example Square 1, 10178 Berlin, Germany",
+        "Business Name": "Example Bike Shop",
+        "Country Code": "DE",
+        "Geo Coordinates": {"Latitude": "52.5200000", "Longitude": "13.4050000"}
+      },
+      "Published": "2023-05-01T10:00:00Z",
+      "Title": "Example Bike Shop",
+      "Updated": "2023-05-01T10:00:00Z"
+    },
+    "type": "Feature"
+  }, {
+    "geometry": {"coordinates": [2.2945, 48.8584], "type": "Point"},
+    "properties": {
+      "Google Maps URL": "http://maps.google.com/?q=48.8584,2.2945",
+      "Location": {"Geo Coordinates": {"Latitude": "48.8584", "Longitude": "2.2945"}},
+      "Published": "2022-08-15T18:30:00Z",
+      "Title": "Dropped pin"
+    },
+    "type": "Feature"
+  }]
+}

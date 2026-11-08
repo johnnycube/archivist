@@ -1,0 +1,33 @@
+{
+  "id": "300000000000000001",
+  "username": "johnny_fixture",
+  "discriminator": 0,
+  "global_name": "Johnny Fixture",
+  "email": "johnny@example.com",
+  "verified": true,
+  "phone": null,
+  "settings": {
+    "locale": "en-US",
+    "theme": "dark",
+    "frecency": "a long synthetic settings blob: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "connections": [
+    {"type": "github", "id": "1", "name": "johnny-fixture", "visibility": 1}
+  ],
+  "relationships": [
+    {
+      "id": "300000000000000002",
+      "type": 1,
+      "nickname": null,
+      "user": {"id": "300000000000000002", "username": "jane", "global_name": "Jane Fixture", "discriminator": "0"}
+    },
+    {
+      "id": "300000000000000003",
+      "type": 2,
+      "nickname": null,
+      "user": {"id": "300000000000000003", "username": "spammer", "discriminator": "1234"}
+    }
+  ],
+  "payments": [],
+  "notes": {"300000000000000002": "met at the bike market"}
+}

@@ -1,0 +1,25 @@
+[
+  {
+    "id": "whatsapp",
+    "display_name": "WhatsApp",
+    "maturity": "verified",
+    "ingestion_modes": [
+      "bundle"
+    ],
+    "event_types": [
+      {
+        "type": "whatsapp.message",
+        "category": "message",
+        "has_body": true,
+        "needs_target": true
+      }
+    ]
+  },
+  {
+    "id": "bare",
+    "display_name": "",
+    "maturity": "experimental",
+    "ingestion_modes": [],
+    "event_types": []
+  }
+]

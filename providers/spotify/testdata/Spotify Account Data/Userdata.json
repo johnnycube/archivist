@@ -1,0 +1,9 @@
+{
+  "username": "sampleuser",
+  "email": "sample@example.com",
+  "country": "DE",
+  "createdFromFacebook": false,
+  "birthdate": "1990-01-01",
+  "gender": "neutral",
+  "creationTime": "2015-05-05"
+}

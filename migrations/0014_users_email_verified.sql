@@ -1,0 +1,17 @@
+-- +goose Up
+-- (Migration-runner annotation. No Down section: migrations are forward-only.
+-- The runner wraps this file in a transaction.)
+--
+-- Whether an identity provider has vouched for the account's email
+-- (domain.User.EmailVerified). An OIDC login may be attached to an existing
+-- account by email only when this is true: password signup never proves the
+-- address, so without it anyone could register victim@example.com with a
+-- password and receive the victim's first provider login (account
+-- pre-hijacking).
+--
+-- No backfill, on purpose. Before this migration an account created by an
+-- OIDC login did not require the provider to have verified the address, so
+-- no existing row can be trusted to be verified. Existing links are
+-- unaffected (they are looked up by provider and subject, not by email); a
+-- password account attaches a provider from its account page.
+ALTER TABLE users ADD COLUMN email_verified boolean NOT NULL DEFAULT false;

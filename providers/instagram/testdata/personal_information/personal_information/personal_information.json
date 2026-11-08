@@ -1,0 +1,10 @@
+{
+  "profile_user": [
+    {
+      "string_map_data": {
+        "Username": { "value": "johnny.example" },
+        "Name": { "value": "Johnny Example" }
+      }
+    }
+  ]
+}

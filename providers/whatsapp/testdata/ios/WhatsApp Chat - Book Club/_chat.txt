@@ -1,0 +1,15 @@
+[01.04.22, 09:00:00] Book Club: ‎Messages and calls are end-to-end encrypted. No one outside of this chat, not even WhatsApp, can read or listen to them.
+[01.04.22, 09:00:05] ‎Jane Doe added Bob Builder
+[02.04.22, 10:15:30] Jane Doe: Welcome everyone!
+This month we read:
+
+- Dune
+- Solaris
+[03.04.22, 11:00:00] Bob Builder: Sounds good
+‎[15.04.22, 14:03:21] Jane Doe: ‎<attached: 00000012-PHOTO-2022-04-15-14-03-21.jpg>
+[15.04.22, 14:04:00] Bob Builder: ‎image omitted
+[15.04.22, 14:05:00] Bob Builder: This message was deleted
+[15.04.22, 14:06:10] Jane Doe: See you at 7 ‎<This message was edited>
+[15.04.22, 14:07:00] ‪+49 170 0000000‬: Hi, I am new here
+[16.04.22, 08:00:00] Bob Builder: ok
+[16.04.22, 08:00:00] Bob Builder: ok

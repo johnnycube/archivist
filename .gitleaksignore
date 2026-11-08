@@ -1,0 +1,6 @@
+# gitleaks fingerprints to ignore (file:rule:line). Each is a test fixture, not
+# a credential: a METRICS_TOKEN value in a config test and the PBKDF2 test
+# vectors (salt + derived key) for the legacy-hash verifier.
+cmd/server/config_test.go:generic-api-key:232
+internal/adapters/crypto/crypto_test.go:generic-api-key:61
+internal/adapters/crypto/crypto_test.go:generic-api-key:83

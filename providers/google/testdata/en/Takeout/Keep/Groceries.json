@@ -1,0 +1,16 @@
+{
+  "color": "DEFAULT",
+  "isTrashed": false,
+  "isPinned": true,
+  "isArchived": false,
+  "listContent": [
+    {"textHtml": "Milk", "text": "Milk", "isChecked": true},
+    {"textHtml": "Spokes (36)", "text": "Spokes (36)", "isChecked": false}
+  ],
+  "title": "Groceries",
+  "userEditedTimestampUsec": 1709800000000000,
+  "createdTimestampUsec": 1709700000000000,
+  "labels": [{"name": "Shopping"}],
+  "textContentHtml": "",
+  "textContent": ""
+}

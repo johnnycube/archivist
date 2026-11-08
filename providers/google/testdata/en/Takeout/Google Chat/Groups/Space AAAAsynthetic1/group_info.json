@@ -1,0 +1,7 @@
+{
+  "name": "Weekend Riders",
+  "members": [
+    {"name": "Alice Example", "email": "alice@example.com", "user_type": "Human"},
+    {"name": "Bob Example", "email": "bob@example.com", "user_type": "Human"}
+  ]
+}

@@ -1,0 +1,4 @@
+[
+  { "timestamp": 1650050000, "attachments": [{ "data": [{ "media": { "uri": "your_facebook_activity/posts/media/a.jpg", "creation_timestamp": 1650050000 } }] }], "title": "Johnny added a new photo." },
+  { "timestamp": 1650050000, "attachments": [{ "data": [{ "media": { "uri": "your_facebook_activity/posts/media/b.jpg", "creation_timestamp": 1650050000 } }] }], "title": "Johnny added a new photo." }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "platform": "ANDROID",
+    "searchTime": "2021-01-31T12:34:56.789Z[UTC]",
+    "searchQuery": "placeholders night",
+    "searchInteractionURIs": [
+      "spotify:track:1111111111111111111111"
+    ]
+  },
+  {
+    "platform": "DESKTOP",
+    "searchTime": "2021-02-03T09:00:00.001Z[UTC]",
+    "searchQuery": "sample show",
+    "searchInteractionURIs": []
+  }
+]

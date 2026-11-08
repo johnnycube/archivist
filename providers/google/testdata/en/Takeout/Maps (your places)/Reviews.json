@@ -1,0 +1,20 @@
+{
+  "type": "FeatureCollection",
+  "features": [{
+    "geometry": {"coordinates": [13.4050000, 52.5200000], "type": "Point"},
+    "properties": {
+      "Five Star Rating Published": 5,
+      "Google Maps URL": "http://maps.google.com/?cid=1234567890123456789",
+      "Location": {
+        "Address": "Example Square 1, 10178 Berlin, Germany",
+        "Business Name": "Example Bike Shop",
+        "Country Code": "DE",
+        "Geo Coordinates": {"Latitude": "52.5200000", "Longitude": "13.4050000"}
+      },
+      "Published": "2023-06-02T12:00:00Z",
+      "Review Comment": "Trued my wheel while I waited. Friendly staff.",
+      "Star Rating": 5
+    },
+    "type": "Feature"
+  }]
+}

@@ -1,0 +1,35 @@
+[{
+  "header": "Search",
+  "title": "Searched for bicycle wheel truing stand",
+  "titleUrl": "https://www.google.com/search?q=bicycle+wheel+truing+stand",
+  "time": "2024-03-03T09:15:00.000Z",
+  "products": ["Search"],
+  "activityControls": ["Web & App Activity"],
+  "locationInfos": [{
+    "name": "At this general area - From your places (Home)",
+    "url": "https://www.google.com/maps/@?api=1&map_action=map&center=52.520000,13.405000&zoom=12",
+    "source": "From your places (Home)",
+    "sourceUrl": "https://www.google.com/maps/@?api=1&map_action=map&center=52.520000,13.405000&zoom=12"
+  }]
+}, {
+  "header": "Search",
+  "title": "Visited Wheel Truing 101 - Example Bike Wiki",
+  "titleUrl": "https://bikes.example.org/wiki/wheel-truing",
+  "time": "2024-03-03T09:16:30.000Z",
+  "products": ["Search"],
+  "activityControls": ["Web & App Activity"]
+}, {
+  "header": "Search",
+  "title": "Used Search",
+  "time": "2024-03-03T09:14:00.000Z",
+  "products": ["Search"],
+  "activityControls": ["Web & App Activity"]
+}, {
+  "header": "Search",
+  "title": "Searched for café racer & co",
+  "titleUrl": "https://www.google.com/search?q=caf%C3%A9+racer+%26+co",
+  "time": "2024-03-04T20:00:00.000+02:00",
+  "products": ["Search"],
+  "details": [{"name": "From Google Ads"}],
+  "activityControls": ["Web & App Activity"]
+}]

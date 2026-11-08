@@ -1,0 +1,4 @@
+{ "installed_apps_v2": [
+    { "name": "Runtastic", "added_timestamp": 1650094000, "removed_timestamp": 1660094000, "user_app_scoped_id": 1, "category": "removed" },
+    { "name": "Old Quiz", "added_timestamp": 0, "removed_timestamp": 1640094000, "user_app_scoped_id": 2, "category": "removed" }
+] }

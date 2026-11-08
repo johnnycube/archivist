@@ -1,0 +1,14 @@
+{
+  "Basic Information": {
+    "Username": "johnny_example",
+    "Name": "Johnny Example",
+    "Creation Date": "2019-04-01 12:00:00 UTC"
+  },
+  "Device History": [
+    {"Make": "Google", "Model": "Pixel 8", "Start Time": "2023-11-01 10:00:00 UTC", "Device Type": "PHONE"}
+  ],
+  "Login History": [
+    {"IP": "203.0.113.7", "Country": "DE", "Created": "2024-01-31 12:00:00 UTC", "Status": "success", "Device": "Pixel 8"},
+    {"IP": "198.51.100.23", "Country": "US", "Created": "2024-01-20 03:00:00 UTC", "Status": "failed", "Device": "Unknown"}
+  ]
+}

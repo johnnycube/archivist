@@ -1,0 +1,6 @@
+CONVERSATION ID,CONVERSATION TITLE,FROM,SENDER PROFILE URL,TO,RECIPIENT PROFILE URLS,DATE,SUBJECT,CONTENT,FOLDER,ATTACHMENTS,IS MESSAGE DRAFT
+2-abc123==,,Jane Doe,https://www.linkedin.com/in/jane-doe-example,Sam Sample,https://www.linkedin.com/in/sam-sample-example,2024-01-31 12:34:56 UTC,,"<p>Hi Sam,</p>
+<p>are you at the meetup, too?</p>",INBOX,,No
+2-abc123==,,Sam Sample,https://www.linkedin.com/in/sam-sample-example,Jane Doe,https://www.linkedin.com/in/jane-doe-example,2024-01-31 12:40:00 UTC,,"Yes, see you there!",INBOX,,No
+2-def456==,Hiring,Rita Recruiter,https://www.linkedin.com/in/rita-recruiter-example,Sam Sample,https://www.linkedin.com/in/sam-sample-example,2023-11-02 08:00:00 UTC,An exciting opportunity,We are hiring.,INBOX,https://www.linkedin.com/dms/attachment/role.pdf,No
+2-def456==,Hiring,Sam Sample,https://www.linkedin.com/in/sam-sample-example,Rita Recruiter,https://www.linkedin.com/in/rita-recruiter-example,2023-11-02 09:00:00 UTC,,Unsent thoughts,INBOX,,Yes

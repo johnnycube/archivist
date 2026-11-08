@@ -1,0 +1,9 @@
+{
+  "Received Snap History": [
+    {"From": "jane_doe", "Media Type": "IMAGE", "Created": "2020-05-02 08:00:00 UTC"}
+  ],
+  "Sent Snap History": [
+    {"To": "jane_doe", "Media Type": "IMAGE", "Created": "2020-05-02 08:00:00 UTC"},
+    {"To": "max_mustermann", "Media Type": "VIDEO", "Created": "2020-05-02 08:30:00 UTC"}
+  ]
+}

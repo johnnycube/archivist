@@ -1,0 +1,42 @@
+{
+  "timelineObjects": [{
+    "placeVisit": {
+      "location": {
+        "latitudeE7": 525200000,
+        "longitudeE7": 134050000,
+        "placeId": "ChIJSYNTHETIC0000000000001",
+        "address": "Example Square 1, 10178 Berlin, Germany",
+        "name": "Example Square",
+        "semanticType": "TYPE_SEARCHED_ADDRESS"
+      },
+      "duration": {
+        "startTimestamp": "2024-03-06T08:10:00Z",
+        "endTimestamp": "2024-03-06T09:40:00Z"
+      },
+      "placeConfidence": "HIGH_CONFIDENCE",
+      "visitConfidence": 87,
+      "centerLatE7": 525200000,
+      "centerLngE7": 134050000
+    }
+  }, {
+    "activitySegment": {
+      "startLocation": {"latitudeE7": 525200000, "longitudeE7": 134050000},
+      "endLocation": {"latitudeE7": 525000000, "longitudeE7": 134000000},
+      "duration": {
+        "startTimestamp": "2024-03-06T09:40:00Z",
+        "endTimestamp": "2024-03-06T10:05:00Z"
+      },
+      "distance": 3850,
+      "activityType": "CYCLING",
+      "confidence": "HIGH",
+      "activities": [{"activityType": "CYCLING", "probability": 92.5}, {"activityType": "WALKING", "probability": 5.1}],
+      "waypointPath": {"waypoints": [{"latE7": 525200000, "lngE7": 134050000}]}
+    }
+  }, {
+    "placeVisit": {
+      "location": {"latitudeE7": 525000000, "longitudeE7": 134000000, "placeId": "ChIJSYNTHETIC0000000000002", "semanticType": "TYPE_HOME"},
+      "duration": {"startTimestampMs": "1709719500000", "endTimestampMs": "1709740000000"},
+      "placeConfidence": "USER_CONFIRMED"
+    }
+  }]
+}

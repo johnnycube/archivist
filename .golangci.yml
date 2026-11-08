@@ -1,0 +1,28 @@
+# golangci-lint v2 configuration (fleetlint lint/configured/go). `make lint`
+# runs it; the pre-commit hook runs it on changed lines.
+#
+# Ratchet: new-from-rev reports only issues on lines changed since the
+# revision below, so existing code is not rewritten to satisfy the linters
+# all at once; a line that is touched has to pass. The revision is a tag, not
+# a commit hash: a hash stops resolving after a history rewrite or a rebase
+# merge, and golangci-lint then silently reports everything (CI showed 252
+# issues when that happened). Move the tag forward once a package has been
+# cleaned up; every clone and CI checkout fetches tags.
+version: "2"
+run:
+  timeout: 5m
+formatters:
+  enable: [gofumpt, goimports]
+linters:
+  default: none
+  enable: [errcheck, govet, staticcheck, unused, ineffassign, errorlint, nilerr, bodyclose, noctx, gosec, revive, gocognit, funlen, exhaustive, unparam, godox, nolintlint, dupl]
+  settings:
+    gocognit: { min-complexity: 15 }
+    funlen: { lines: 60, statements: 40 }
+    nolintlint: { require-explanation: true, require-specific: true }
+  exclusions:
+    rules:
+      - path: _test\.go
+        linters: [funlen, gocognit, gosec, dupl]
+issues:
+  new-from-rev: lint-baseline

@@ -1,0 +1,80 @@
+{
+  "src/lib/components/Cluster.svelte": {
+    "svelte/infinite-reactive-loop": {
+      "count": 2
+    },
+    "svelte/prefer-svelte-reactivity": {
+      "count": 1
+    }
+  },
+  "src/lib/components/EventModal.svelte": {
+    "svelte/require-each-key": {
+      "count": 1
+    }
+  },
+  "src/lib/components/ImportForm.svelte": {
+    "svelte/require-each-key": {
+      "count": 1
+    }
+  },
+  "src/lib/components/Overview.svelte": {
+    "svelte/prefer-svelte-reactivity": {
+      "count": 1
+    }
+  },
+  "src/lib/components/RangeBar.svelte": {
+    "complexity": {
+      "count": 2
+    },
+    "no-useless-assignment": {
+      "count": 1
+    },
+    "svelte/prefer-svelte-reactivity": {
+      "count": 3
+    }
+  },
+  "src/lib/components/RichText.svelte": {
+    "svelte/require-each-key": {
+      "count": 1
+    }
+  },
+  "src/lib/components/Sidebar.svelte": {
+    "svelte/require-each-key": {
+      "count": 2
+    }
+  },
+  "src/lib/components/Timeline.svelte": {
+    "complexity": {
+      "count": 1
+    },
+    "no-useless-assignment": {
+      "count": 2
+    },
+    "svelte/prefer-svelte-reactivity": {
+      "count": 3
+    }
+  },
+  "src/routes/+layout.svelte": {
+    "svelte/require-each-key": {
+      "count": 1
+    }
+  },
+  "src/routes/+page.svelte": {
+    "svelte/prefer-svelte-reactivity": {
+      "count": 3
+    }
+  },
+  "src/routes/help/exports/+page.svelte": {
+    "svelte/no-useless-mustaches": {
+      "count": 1
+    },
+    "svelte/require-each-key": {
+      "count": 5
+    }
+  },
+  "src/routes/import/+page.svelte": {
+    "svelte/require-each-key": {
+      "count": 1
+    }
+  }
+}

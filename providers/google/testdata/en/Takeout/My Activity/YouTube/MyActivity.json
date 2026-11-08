@@ -1,0 +1,20 @@
+[
+  {
+    "header": "YouTube",
+    "title": "Watched How to true a bicycle wheel",
+    "titleUrl": "https://www.youtube.com/watch?v\u003daaaaaaaaa01",
+    "subtitles": [
+      {
+        "name": "Example Bike Shop",
+        "url": "https://www.youtube.com/channel/UCaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    ],
+    "time": "2024-03-01T18:22:11.123Z",
+    "products": [
+      "YouTube"
+    ],
+    "activityControls": [
+      "YouTube watch history"
+    ]
+  }
+]

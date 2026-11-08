@@ -1,0 +1,15 @@
+[{
+  "header": "Google Suche",
+  "title": "Nach fahrrad zentrieren gesucht",
+  "titleUrl": "https://www.google.com/search?q=fahrrad+zentrieren",
+  "time": "2024-03-03T09:15:00.000Z",
+  "products": ["Google Suche"],
+  "activityControls": ["Web- & App-Aktivitäten"]
+}, {
+  "header": "Google Suche",
+  "title": "Beispielseite aufgerufen",
+  "titleUrl": "https://beispiel.example.de/",
+  "time": "2024-03-03T09:16:30.000Z",
+  "products": ["Google Suche"],
+  "activityControls": ["Web- & App-Aktivitäten"]
+}]

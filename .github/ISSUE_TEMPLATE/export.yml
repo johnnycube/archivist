@@ -1,0 +1,46 @@
+name: An export is not (fully) understood
+description: An import fails, or an export's data lands in <source>.unknown instead of typed events
+labels: ["provider"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks — most providers were written from documented formats and synthetic
+        exports, so real exports are how they get right. **Never attach your export
+        or paste personal data.** The coverage report holds counts, event types and
+        the names of the files that were not recognised; that is usually enough.
+  - type: dropdown
+    id: source
+    attributes:
+      label: Source
+      options: [reddit, chatgpt, claude, twitter, instagram, facebook, google, whatsapp, tiktok, telegram, snapchat, spotify, linkedin, discord]
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Archivist version
+      description: The image tag, or what /healthz answers.
+      placeholder: "0.1.0"
+    validations:
+      required: true
+  - type: textarea
+    id: request
+    attributes:
+      label: How the export was requested
+      description: Format and options you chose (JSON or HTML, date range, which data types), and roughly when.
+    validations:
+      required: true
+  - type: textarea
+    id: coverage
+    attributes:
+      label: Coverage report
+      description: On the import page, "Copy report" next to the import copies it (no content, only counts and file names).
+      render: json
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong
+      description: The error the import shows, events that are missing or wrong, files that stayed unknown. A redacted snippet of one record helps a lot — replace names, ids and text, keep the structure.
+    validations:
+      required: true

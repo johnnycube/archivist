@@ -1,0 +1,40 @@
+[
+  {
+    "title": "Trip planning",
+    "conversation_id": "conv1",
+    "create_time": 1700000000,
+    "update_time": 1700000010.5,
+    "current_node": "n2",
+    "default_model_slug": "gpt-4o",
+    "mapping": {
+      "root": { "id": "root", "parent": null, "children": ["sys"], "message": null },
+      "sys":  { "id": "sys", "parent": "root", "children": ["n1"], "message": { "id": "m0", "author": { "role": "system", "metadata": {} }, "create_time": null, "content": { "content_type": "text", "parts": [""] }, "status": "finished_successfully", "weight": 0, "metadata": { "is_visually_hidden_from_conversation": true }, "recipient": "all" } },
+      "n1":   { "id": "n1", "parent": "sys", "children": ["n2", "n2b"], "message": { "id": "m1", "author": { "role": "user", "metadata": {} }, "create_time": 1700000001.123, "content": { "content_type": "text", "parts": ["Plan a trip to Japan"] }, "status": "finished_successfully", "weight": 1, "metadata": {}, "recipient": "all" } },
+      "n2":   { "id": "n2", "parent": "n1", "children": [], "message": { "id": "m2", "author": { "role": "assistant", "metadata": {} }, "create_time": 1700000002, "content": { "content_type": "text", "parts": ["Sure! Here is a 7-day plan..."] }, "status": "finished_successfully", "end_turn": true, "weight": 1, "metadata": { "model_slug": "gpt-4o" }, "recipient": "all" } },
+      "n2b":  { "id": "n2b", "parent": "n1", "children": [], "message": { "id": "m2b", "author": { "role": "assistant", "metadata": {} }, "create_time": 1700000001.5, "content": { "content_type": "text", "parts": ["An earlier, regenerated answer."] }, "status": "finished_successfully", "weight": 1, "metadata": { "model_slug": "gpt-4" }, "recipient": "all" } }
+    }
+  },
+  {
+    "title": "Pasta recipe",
+    "conversation_id": "conv2",
+    "create_time": 1700100000,
+    "update_time": 1700100001,
+    "current_node": "r",
+    "mapping": {
+      "r": { "id": "r", "parent": null, "children": [], "message": { "id": "m3", "author": { "role": "user", "metadata": {} }, "create_time": 1700100001, "content": { "content_type": "text", "parts": ["How do I make carbonara?"] }, "status": "finished_successfully", "weight": 1, "metadata": {}, "recipient": "all" } }
+    }
+  },
+  {
+    "title": "Photo question",
+    "conversation_id": "conv3",
+    "create_time": 1700200000,
+    "update_time": 1700200020,
+    "current_node": "p3",
+    "mapping": {
+      "p0": { "id": "p0", "parent": null, "children": ["p1"], "message": null },
+      "p1": { "id": "p1", "parent": "p0", "children": ["p2"], "message": { "id": "m4", "author": { "role": "user", "metadata": {} }, "create_time": 1700200001, "content": { "content_type": "multimodal_text", "parts": [ { "content_type": "image_asset_pointer", "asset_pointer": "file-service://file-AbC123", "size_bytes": 12345, "width": 640, "height": 480, "fovea": null, "metadata": null }, "What is in this picture?" ] }, "status": "finished_successfully", "weight": 1, "metadata": { "attachments": [ { "id": "file-AbC123", "name": "photo.png", "mimeType": "image/png", "size": 12345 } ] }, "recipient": "all" } },
+      "p2": { "id": "p2", "parent": "p1", "children": ["p3"], "message": { "id": "m5", "author": { "role": "assistant", "metadata": {} }, "create_time": null, "content": { "content_type": "code", "language": "python", "text": "print('hello')" }, "status": "finished_successfully", "weight": 1, "metadata": {}, "recipient": "python" } },
+      "p3": { "id": "p3", "parent": "p2", "children": [], "message": { "id": "m6", "author": { "role": "tool", "name": "python", "metadata": {} }, "create_time": 1700200003, "content": { "content_type": "execution_output", "text": "hello" }, "status": "finished_successfully", "weight": 1, "metadata": {}, "recipient": "all" } }
+    }
+  }
+]

@@ -1,0 +1,112 @@
+{
+  "Activity": {
+    "Favorite Effects": {
+      "FavoriteEffectsList": [
+        {"Date": "2024-01-05 09:00:00", "EffectLink": "https://www.tiktok.com/sticker/Green-Screen-100001"}
+      ]
+    },
+    "Favorite Videos": {
+      "FavoriteVideoList": [
+        {"Date": "2024-01-31 12:34:56", "Link": "https://www.tiktokv.com/share/video/7300000000000000001/"}
+      ]
+    },
+    "Follower List": {
+      "FansList": [
+        {"Date": "2024-01-10 08:00:00", "UserName": "max_mustermann"},
+        {"Date": "2024-01-11 08:00:00", "UserName": "jane_doe"}
+      ]
+    },
+    "Following List": {
+      "Following": [
+        {"Date": "2024-01-09 18:30:00", "UserName": "jane_doe"},
+        {"Date": "2024-01-12 07:15:00", "UserName": "bike.channel"}
+      ]
+    },
+    "Like List": {
+      "ItemFavoriteList": [
+        {"Date": "2024-01-31 12:34:56", "Link": "https://www.tiktokv.com/share/video/7300000000000000001/"},
+        {"Date": "2024-02-01 20:00:00", "Link": "https://www.tiktokv.com/share/video/7300000000000000002/"}
+      ]
+    },
+    "Login History": {
+      "LoginHistoryList": [
+        {"Date": "2024-01-31 12:00:00", "IP": "203.0.113.7", "DeviceModel": "Pixel 8", "DeviceSystem": "Android 14", "NetworkType": "Wi-Fi", "Carrier": "Example Mobile"}
+      ]
+    },
+    "Search History": {
+      "SearchList": [
+        {"Date": "2024-01-31 12:30:00", "SearchTerm": "bike repair"},
+        {"Date": "2024-02-02 10:00:00", "SearchTerm": "café latte art"}
+      ]
+    },
+    "Share History": {
+      "ShareHistoryList": [
+        {"Date": "2024-02-01 20:05:00", "SharedContent": "Video", "Link": "https://www.tiktokv.com/share/video/7300000000000000002/", "Method": "WhatsApp"}
+      ]
+    },
+    "Status": {
+      "Status List": []
+    },
+    "Video Browsing History": {
+      "VideoList": [
+        {"Date": "2024-01-31 12:34:56", "Link": "https://www.tiktokv.com/share/video/7300000000000000001/"},
+        {"Date": "2024-01-31 12:35:30", "Link": "https://www.tiktokv.com/share/video/7300000000000000003/"},
+        {"Date": "2024-02-01 19:59:00", "Link": "https://www.tiktokv.com/share/video/7300000000000000002/"}
+      ]
+    }
+  },
+  "App Settings": {
+    "Block": {
+      "BlockList": [
+        {"Date": "2024-01-20 10:00:00", "UserName": "spam_account_1"}
+      ]
+    },
+    "Settings": {
+      "SettingsMap": {
+        "App Language": "en",
+        "Private Account": "Disabled",
+        "Personalized Ads": "Disabled"
+      }
+    }
+  },
+  "Comment": {
+    "Comments": {
+      "CommentsList": [
+        {"Date": "2024-02-01 20:01:00", "Comment": "Great tip, thanks!"},
+        {"Date": "2024-02-03 11:11:11", "Comment": "Where is this?"}
+      ]
+    }
+  },
+  "Direct Messages": {
+    "Chat History": {
+      "ChatHistory": {
+        "Chat History with jane_doe:": [
+          {"Date": "2024-02-01 20:06:00", "From": "johnny_example", "Content": "https://www.tiktokv.com/share/video/7300000000000000002/"},
+          {"Date": "2024-02-01 20:07:30", "From": "jane_doe", "Content": "Haha, love it"},
+          {"Date": "2024-02-01 20:08:00", "From": "johnny_example", "Content": "See you tomorrow"}
+        ],
+        "Chat History with max_mustermann:": [
+          {"Date": "2024-02-01 20:07:30", "From": "max_mustermann", "Content": "Haha, love it"}
+        ]
+      }
+    }
+  },
+  "Profile": {
+    "Profile Information": {
+      "ProfileMap": {
+        "userName": "johnny_example",
+        "bioDescription": "Synthetic fixture account",
+        "emailAddress": "johnny@example.com",
+        "likesReceived": 42
+      }
+    }
+  },
+  "Video": {
+    "Videos": {
+      "VideoList": [
+        {"Date": "2024-01-15 16:00:00", "Link": "https://v16.example-cdn.com/video/tos/7299999999999999991/", "Likes": "12", "Title": "First ride of the year"},
+        {"Date": "2024-01-31 12:34:56", "Link": "https://www.tiktokv.com/share/video/7300000000000000001/", "Likes": 3}
+      ]
+    }
+  }
+}

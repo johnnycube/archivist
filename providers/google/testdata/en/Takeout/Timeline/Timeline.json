@@ -1,0 +1,53 @@
+{
+  "semanticSegments": [{
+    "startTime": "2024-04-03T08:13:57.000+02:00",
+    "endTime": "2024-04-03T10:00:00.000+02:00",
+    "startTimeTimezoneUtcOffsetMinutes": 120,
+    "endTimeTimezoneUtcOffsetMinutes": 120,
+    "visit": {
+      "hierarchyLevel": 0,
+      "probability": 0.87,
+      "topCandidate": {
+        "placeId": "ChIJSYNTHETIC0000000000003",
+        "semanticType": "WORK",
+        "probability": 0.45,
+        "placeLocation": {"latLng": "50.0506312°, 14.3439906°"}
+      }
+    }
+  }, {
+    "startTime": "2024-04-03T10:00:00.000+02:00",
+    "endTime": "2024-04-03T10:20:00.000+02:00",
+    "activity": {
+      "start": {"latLng": "50.0506312°, 14.3439906°"},
+      "end": {"latLng": "50.0800000°, 14.4200000°"},
+      "distanceMeters": "6100.5",
+      "probability": 0.9,
+      "topCandidate": {"type": "IN_PASSENGER_VEHICLE", "probability": 0.8}
+    }
+  }, {
+    "startTime": "2024-04-03T10:00:00.000+02:00",
+    "endTime": "2024-04-03T10:20:00.000+02:00",
+    "timelinePath": [
+      {"point": "50.0600000°, 14.3600000°", "time": "2024-04-03T10:05:00.000+02:00"},
+      {"point": "geo:50.0700000,14.4000000", "durationMinutesOffsetFromStartTime": "15"}
+    ]
+  }],
+  "rawSignals": [{
+    "position": {
+      "LatLng": "48.833657°, 2.256223°",
+      "accuracyMeters": 13,
+      "altitudeMeters": 90.7,
+      "source": "WIFI",
+      "timestamp": "2024-06-06T11:44:37.000+01:00",
+      "speedMetersPerSecond": 0.07
+    }
+  }, {
+    "activityRecord": {
+      "probableActivities": [{"type": "STILL", "confidence": 0.96}],
+      "timestamp": "2024-04-26T20:54:38.000+02:00"
+    }
+  }],
+  "userLocationProfile": {
+    "frequentPlaces": [{"placeId": "ChIJSYNTHETIC0000000000003", "placeLocation": "50.0506312°, 14.3439906°", "label": "WORK"}]
+  }
+}

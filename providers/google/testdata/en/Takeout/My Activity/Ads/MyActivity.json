@@ -1,0 +1,9 @@
+[{
+  "header": "Ads",
+  "title": "Viewed ad for Example Phone",
+  "titleUrl": "https://phones.example.com/",
+  "time": "2024-03-07T07:31:00.000Z",
+  "products": ["Ads"],
+  "details": [{"name": "From Google Ads"}],
+  "activityControls": ["Web & App Activity"]
+}]

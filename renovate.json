@@ -1,0 +1,40 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    "helpers:pinGitHubActionDigests",
+    ":semanticCommits",
+    "customManagers:makefileVersions",
+    "customManagers:githubActionsVersions"
+  ],
+  "postUpdateOptions": [
+    "gomodTidy"
+  ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": [
+      "before 6am on monday"
+    ]
+  },
+  "pre-commit": {
+    "enabled": true
+  },
+  "minimumReleaseAge": "3 days",
+  "packageRules": [
+    {
+      "description": "Go: mise.toml and the Dockerfile's golang image move together (scripts/check-toolchain.sh fails when they differ)",
+      "matchDepNames": [
+        "go",
+        "golang"
+      ],
+      "groupName": "go toolchain"
+    },
+    {
+      "description": "Node: mise.toml and the Dockerfile's node image move together",
+      "matchDepNames": [
+        "node"
+      ],
+      "groupName": "node toolchain"
+    }
+  ]
+}

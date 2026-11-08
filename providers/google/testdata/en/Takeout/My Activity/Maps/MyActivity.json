@@ -1,0 +1,27 @@
+[{
+  "header": "Maps",
+  "title": "Searched for bike shop near me",
+  "titleUrl": "https://www.google.com/maps/search/bike+shop+near+me",
+  "time": "2024-03-06T08:00:00.000Z",
+  "products": ["Maps"],
+  "activityControls": ["Web & App Activity"],
+  "locationInfos": [{
+    "name": "At this general area - From your device",
+    "url": "https://www.google.com/maps/@?api=1&map_action=map&center=52.520000,13.405000&zoom=12",
+    "source": "From your device"
+  }]
+}, {
+  "header": "Maps",
+  "title": "Viewed area around Example Square",
+  "titleUrl": "https://www.google.com/maps/@52.52,13.405,15z",
+  "time": "2024-03-06T08:01:00.000Z",
+  "products": ["Maps"],
+  "activityControls": ["Web & App Activity"]
+}, {
+  "header": "Maps",
+  "title": "Directions to Example Bike Shop",
+  "titleUrl": "https://www.google.com/maps/dir//Example+Bike+Shop",
+  "time": "2024-03-06T08:02:00.000Z",
+  "products": ["Maps"],
+  "activityControls": ["Web & App Activity"]
+}]

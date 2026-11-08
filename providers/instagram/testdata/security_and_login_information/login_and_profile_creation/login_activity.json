@@ -1,0 +1,16 @@
+{
+  "account_history_login_history": [
+    {
+      "title": "Fixture City, Germany",
+      "media_map_data": {},
+      "string_map_data": {
+        "Cookie Name": { "href": "", "value": "*************************b1", "timestamp": 0 },
+        "IP Address": { "href": "", "value": "203.0.113.7", "timestamp": 0 },
+        "Language Code": { "href": "", "value": "de", "timestamp": 0 },
+        "Time": { "href": "", "value": "", "timestamp": 1650045000 },
+        "User Agent": { "href": "", "value": "Mozilla/5.0 (Linux; Android 14) Instagram 300.0", "timestamp": 0 },
+        "Port": { "href": "", "value": "443", "timestamp": 0 }
+      }
+    }
+  ]
+}

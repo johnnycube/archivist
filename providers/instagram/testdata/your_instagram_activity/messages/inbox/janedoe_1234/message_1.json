@@ -1,0 +1,12 @@
+{
+  "participants": [{ "name": "Jane Doe" }, { "name": "Johnny" }],
+  "messages": [
+    { "sender_name": "Jane Doe", "timestamp_ms": 1650020002500, "content": "CafÃ© at five?", "reactions": [{ "reaction": "\u00e2\u009d\u00a4", "actor": "Johnny" }], "is_geoblocked_for_viewer": false },
+    { "sender_name": "Johnny", "timestamp_ms": 1650020001000, "photos": [{ "uri": "your_instagram_activity/messages/inbox/janedoe_1234/photos/1.jpg", "creation_timestamp": 1650020001 }], "is_geoblocked_for_viewer": false },
+    { "sender_name": "Johnny", "timestamp_ms": 1650020000000, "share": { "link": "https://www.instagram.com/reel/RRR/", "share_text": "Best pasta in town", "original_content_owner": "great.recipes" }, "is_geoblocked_for_viewer": false }
+  ],
+  "title": "Jane Doe",
+  "is_still_participant": true,
+  "thread_path": "inbox/janedoe_1234",
+  "magic_words": []
+}

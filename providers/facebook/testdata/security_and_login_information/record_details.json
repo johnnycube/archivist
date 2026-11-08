@@ -1,0 +1,4 @@
+{ "admin_records_v2": [
+    { "event": "Email change", "extra_info": { "old_email": "old@example.com", "new_email": "new@example.com" }, "session": { "created_timestamp": 1650090000, "ip_address": "203.0.113.7", "user_agent": "Mozilla/5.0" } },
+    { "event": "Checkpoint completed", "session": { "created_timestamp": 1650091000, "ip_address": "203.0.113.7", "user_agent": "Mozilla/5.0" } }
+] }

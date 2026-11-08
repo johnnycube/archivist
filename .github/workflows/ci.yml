@@ -1,0 +1,134 @@
+# CI for GitHub and Gitea Actions (Gitea reads .github/workflows/ too).
+#
+# Tool versions come from mise.toml (jdx/mise-action installs them), so this
+# runs the same `make check` with the same versions as a developer machine.
+# Actions are pinned to commit SHAs (`pinact run -u` updates them) and images
+# by digest; Renovate keeps both current.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "17 6 * * 1" # weekly: new vulnerabilities in unchanged code, mutation testing
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: archivist
+          POSTGRES_PASSWORD: archivist
+          POSTGRES_DB: archivist
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U archivist -d archivist"
+          --health-interval 5s --health-timeout 3s --health-retries 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0 # golangci-lint's new-from-rev ratchet and gitleaks need the history
+          persist-credentials: false
+
+      - name: Toolchain and tools from mise.toml
+        uses: jdx/mise-action@f5be966e4a917d54244728e6a5fdcd1d93a35e6c # v5.2.6
+        with:
+          install: true
+          cache: true
+
+      - name: Frontend dependencies
+        run: cd frontend && npm ci
+
+      # lint, test (with the Postgres integration tests), cover, audit, build,
+      # fleetlint. The service's address differs per forge: a GitHub-hosted job
+      # runs on the VM, where the published port is on localhost; a Gitea
+      # act_runner job runs in a container on the service network, where only
+      # the service's name resolves and nothing listens on localhost.
+      - name: make check
+        shell: bash
+        run: |
+          set -euo pipefail
+          host=localhost
+          if getent hosts postgres >/dev/null; then host=postgres; fi
+          for _ in $(seq 1 30); do
+            (exec 3<>"/dev/tcp/$host/5432") 2>/dev/null && break
+            sleep 1
+          done
+          DATABASE_URL="postgres://archivist:archivist@$host:5432/archivist?sslmode=disable" make check
+
+      # internal/webui/dist is committed (go:embed needs it on a fresh clone) and
+      # the build is reproducible, so a diff means someone changed frontend/
+      # without running `make web`.
+      - name: Committed UI build is up to date
+        run: git diff --exit-code --stat -- internal/webui/dist
+
+      - name: docs/exports.md is up to date
+        run: node frontend/scripts/gen-export-docs.mjs --check
+
+  # Static application security testing (fleetlint ci/sast). CodeQL needs
+  # GitHub; Semgrep's registry rules run anywhere. False positives are
+  # annotated in the code with `nosemgrep: <rule> -- <reason>`.
+  sast:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    container:
+      image: semgrep/semgrep:1.183.0@sha256:2e45517a85e13a9cca14a2a00df6bb48affd66b8ebfae1b0991cd57578362fb0
+    steps:
+      # JavaScript actions (checkout) need a node in the job container: GitHub
+      # mounts its own runtime into it, Gitea's act_runner runs the image's.
+      - name: node for the actions
+        run: apk add --no-cache nodejs
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: semgrep
+        run: >-
+          semgrep scan --config p/golang --config p/javascript --error --metrics=off
+          --exclude internal/webui/dist --exclude testdata
+
+  docker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    needs: check
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      # On Gitea the build runs on the BuildKit the runner names in
+      # BUILDKIT_HOST (its jobs are Kubernetes pods without a Docker daemon);
+      # on GitHub in a local BuildKit container. Nothing is pushed or loaded:
+      # this only proves the image builds.
+      - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+        with:
+          driver: ${{ env.BUILDKIT_HOST && 'remote' || 'docker-container' }}
+          endpoint: ${{ env.BUILDKIT_HOST }}
+      - name: Build image
+        run: docker buildx build --build-arg VERSION="$GITHUB_SHA" -t "archivist:$GITHUB_SHA" .
+
+  # Mutation testing of the application core (fleetlint quality/mutation-gate):
+  # weekly and on demand, not on every push.
+  mutate:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: jdx/mise-action@f5be966e4a917d54244728e6a5fdcd1d93a35e6c # v5.2.6
+        with:
+          install: true
+          cache: true
+      - run: make mutate

@@ -1,0 +1,45 @@
+{
+ "name": "Max Example",
+ "type": "personal_chat",
+ "id": 5555,
+ "messages": [
+  {
+   "id": 1,
+   "type": "message",
+   "date": "2024-02-02T11:00:00",
+   "date_unixtime": "1706868000",
+   "from": "Max Example",
+   "from_id": "user5555",
+   "photo": "photos/photo_2@02-02-2024_10-00-00.jpg",
+   "text": "Single chat photo",
+   "text_entities": [
+    {"type": "plain", "text": "Single chat photo"}
+   ]
+  },
+  {
+   "id": 2,
+   "type": "message",
+   "date": "2024-02-02T11:01:00",
+   "date_unixtime": "1706868060",
+   "from": "Johnny Example",
+   "from_id": "user1000001",
+   "reply_to_message_id": 1,
+   "text": "Nice one",
+   "text_entities": [
+    {"type": "plain", "text": "Nice one"}
+   ]
+  },
+  {
+   "id": 3,
+   "type": "service",
+   "date": "2024-02-02T11:02:00",
+   "date_unixtime": "1706868120",
+   "actor": "Johnny Example",
+   "actor_id": "user1000001",
+   "action": "pin_message",
+   "message_id": 1,
+   "text": "",
+   "text_entities": []
+  }
+ ]
+}

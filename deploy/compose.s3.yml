@@ -1,0 +1,54 @@
+# Optional S3 blob store for docker-compose.yml: SILO, the community-maintained
+# fork of MinIO (Pigsty, https://github.com/pgsty/minio). MinIO stopped
+# publishing community images in October 2025 and archived the project in
+# February 2026; SILO is a drop-in replacement (same API, same data format,
+# same MINIO_ROOT_* variables, `mc` in the image).
+#
+# Without this file the app keeps blobs on its own volume (filesystem store).
+# With it, original archives and extracted media go to the object store:
+#
+#   docker compose -f docker-compose.yml -f deploy/compose.s3.yml up -d
+#   # or, in .env:  COMPOSE_FILE=docker-compose.yml:deploy/compose.s3.yml
+#   # deploy/deploy.sh: ARCHIVIST_COMPOSE_OVERLAYS=deploy/compose.s3.yml
+#
+# Set MINIO_ROOT_USER and MINIO_ROOT_PASSWORD (at least 8 characters) in .env;
+# the app uses the same credentials. The volume keeps the name the S3 store had
+# in earlier releases (miniodata), so an existing installation keeps its data.
+# To move a filesystem store into it: archivist-blobs migrate-to-s3 (README).
+services:
+  s3:
+    image: docker.io/pgsty/minio:RELEASE.2026-08-04T00-00-00Z@sha256:b6bfe7239bfc83fb90d31612d9704d86039dd714f7904b3f1ad68f211e602372
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:?set MINIO_ROOT_USER in .env}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:?set MINIO_ROOT_PASSWORD (at least 8 characters) in .env}
+    volumes:
+      - miniodata:/data
+    # Deliberately no `ports:` — the S3 API (9000) is reachable from the compose
+    # network only and the web console (9001) is not published. To use the
+    # console from this machine add:  ports: ["127.0.0.1:9001:9001"]
+    healthcheck:
+      # mc ships in the image with a `local` alias for this server.
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+
+  app:
+    depends_on:
+      s3:
+        condition: service_healthy
+    environment:
+      # The app checks the endpoint and credentials at boot (and fails fast if
+      # they are wrong) and creates the bucket itself.
+      BLOB_S3_ENDPOINT: http://s3:9000
+      BLOB_S3_BUCKET: archivist
+      BLOB_S3_ACCESS_KEY: ${MINIO_ROOT_USER:?set MINIO_ROOT_USER in .env}
+      BLOB_S3_SECRET_KEY: ${MINIO_ROOT_PASSWORD:?set MINIO_ROOT_PASSWORD in .env}
+      # Server-side encryption (SSE-S3, AES256) on every upload. Off: the
+      # object store rejects it unless a KMS is configured.
+      # BLOB_S3_SSE: "1"
+
+volumes:
+  miniodata:

@@ -1,0 +1,18 @@
+{
+  "locations": [{
+    "latitudeE7": 525200123,
+    "longitudeE7": 134050456,
+    "accuracy": 12,
+    "altitude": 40,
+    "source": "WIFI",
+    "deviceTag": 123456789,
+    "platformType": "ANDROID",
+    "timestamp": "2024-03-06T08:00:00.000Z"
+  }, {
+    "latitudeE7": 525200200,
+    "longitudeE7": 134050500,
+    "accuracy": 65,
+    "source": "CELL",
+    "timestampMs": "1709712300000"
+  }]
+}

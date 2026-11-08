@@ -1,0 +1,7 @@
+{
+  "Saved Media": [
+    {"Date": "2023-08-15 14:20:00 UTC", "Media Type": "Image", "Location": "Latitude, Longitude: 49.0069, 8.4037", "Download Link": "https://app.example-snap.invalid/dmd/memories?uid=00000000-aaaa&sid=11111111-bbbb&mid=22222222-cccc&ts=1700000000000&sig=EXAMPLESIG1"},
+    {"Date": "2023-08-15 14:20:00 UTC", "Media Type": "Image", "Location": "Latitude, Longitude: 49.0069, 8.4037", "Download Link": "https://app.example-snap.invalid/dmd/memories?uid=00000000-aaaa&sid=11111111-bbbc&mid=22222222-cccd&ts=1700000000000&sig=EXAMPLESIG2"},
+    {"Date": "2023-12-24 18:00:00 UTC", "Media Type": "Video", "Download Link": "https://app.example-snap.invalid/dmd/memories?uid=00000000-aaaa&sid=11111111-bbbd&mid=22222222-ccce&ts=1700000000000&sig=EXAMPLESIG3"}
+  ]
+}

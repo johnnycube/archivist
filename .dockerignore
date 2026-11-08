@@ -1,0 +1,8 @@
+.git
+frontend/node_modules
+frontend/.svelte-kit
+frontend/build
+internal/webui/dist
+*.zip
+vendor
+data

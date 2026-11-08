@@ -1,0 +1,12 @@
+[
+  {
+    "title": "Split export part",
+    "conversation_id": "conv4",
+    "create_time": 1700300000,
+    "update_time": 1700300001,
+    "current_node": "s1",
+    "mapping": {
+      "s1": { "id": "s1", "parent": null, "children": [], "message": { "id": "m7", "author": { "role": "user", "metadata": {} }, "create_time": 1700300001, "content": { "content_type": "text", "parts": ["Message in a numbered part"] }, "status": "finished_successfully", "weight": 1, "metadata": {}, "recipient": "all" } }
+    }
+  }
+]

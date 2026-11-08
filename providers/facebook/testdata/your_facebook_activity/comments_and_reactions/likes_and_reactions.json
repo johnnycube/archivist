@@ -1,0 +1,7 @@
+[
+  { "timestamp": 1650002200, "media": [], "label_values": [
+      { "label": "Reaction", "value": "Like" },
+      { "label": "URL", "value": "https://www.facebook.com/photo/?fbid=1", "href": "https://www.facebook.com/photo/?fbid=1" },
+      { "title": "Owner", "dict": [{ "title": "", "dict": [{ "label": "Name", "value": "Jane Doe" }] }] }
+    ], "fbid": "100001" }
+]

@@ -1,0 +1,55 @@
+{
+  "tracks": [
+    {
+      "artist": "The Placeholders",
+      "album": "Rails",
+      "track": "Night Train",
+      "uri": "spotify:track:1111111111111111111111"
+    },
+    {
+      "artist": "Fixture Quartet",
+      "album": "Dawn",
+      "track": "Slow Morning",
+      "uri": "spotify:track:2222222222222222222222"
+    }
+  ],
+  "albums": [
+    {
+      "artist": "The Placeholders",
+      "album": "Rails",
+      "uri": "spotify:album:6666666666666666666666"
+    }
+  ],
+  "shows": [
+    {
+      "name": "The Sample Show",
+      "publisher": "Sample Media",
+      "uri": "spotify:show:7777777777777777777777"
+    }
+  ],
+  "episodes": [
+    {
+      "name": "Episode 12: Test Data",
+      "show": "The Sample Show",
+      "uri": "spotify:episode:3333333333333333333333"
+    }
+  ],
+  "bannedTracks": [
+    {
+      "artist": "Loud Band",
+      "album": "Noise",
+      "track": "Skip Me",
+      "uri": "spotify:track:8888888888888888888888"
+    }
+  ],
+  "artists": [
+    {
+      "name": "The Placeholders",
+      "uri": "spotify:artist:9999999999999999999999"
+    }
+  ],
+  "bannedArtists": [],
+  "other": [
+    "spotify:user:sampleuser:collection"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "title": "IMG_0001.jpg",
+  "description": "Freshly trued wheel",
+  "imageViews": "3",
+  "creationTime": {"timestamp": "1709800000", "formatted": "Mar 7, 2024, 8:26:40 AM UTC"},
+  "photoTakenTime": {"timestamp": "1709712000", "formatted": "Mar 6, 2024, 8:00:00 AM UTC"},
+  "geoData": {"latitude": 52.52, "longitude": 13.405, "altitude": 40.0, "latitudeSpan": 0.0, "longitudeSpan": 0.0},
+  "geoDataExif": {"latitude": 52.52, "longitude": 13.405, "altitude": 40.0, "latitudeSpan": 0.0, "longitudeSpan": 0.0},
+  "url": "https://photos.google.com/photo/AF1QipSYNTHETIC0000000000000000000000001",
+  "people": [{"name": "Alice Example"}],
+  "favorited": true,
+  "googlePhotosOrigin": {"mobileUpload": {"deviceType": "ANDROID_PHONE"}}
+}

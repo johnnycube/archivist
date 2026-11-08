@@ -1,0 +1,12 @@
+{
+  "participants": [{ "name": "Jane Doe" }, { "name": "Johnny" }],
+  "messages": [
+    { "sender_name": "Jane Doe", "timestamp_ms": 1650010002000, "content": "See you at the cafÃ©?", "is_geoblocked_for_viewer": false },
+    { "sender_name": "Johnny", "timestamp_ms": 1650010001000, "photos": [{ "uri": "your_facebook_activity/messages/inbox/janedoe_1234/photos/1.jpg", "creation_timestamp": 1650010001 }], "is_geoblocked_for_viewer": false },
+    { "sender_name": "Johnny", "timestamp_ms": 1650010000000, "content": "Look at this", "share": { "link": "https://example.com/article" }, "is_geoblocked_for_viewer": false }
+  ],
+  "title": "Jane Doe",
+  "is_still_participant": true,
+  "thread_path": "inbox/janedoe_1234",
+  "magic_words": []
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "ID": 1202220000000000001,
+    "Timestamp": "2024-01-31 12:34:56",
+    "Contents": "See you at the café?",
+    "Attachments": ""
+  },
+  {
+    "ID": 1202220000000000002,
+    "Timestamp": "2024-01-31 12:35:10.123000+00:00",
+    "Contents": "",
+    "Attachments": "https://cdn.discordapp.example/attachments/1/2/route.png https://cdn.discordapp.example/attachments/1/3/map.png"
+  },
+  {
+    "ID": 1202220000000000003,
+    "Timestamp": "2024-01-31T12:36:00+01:00",
+    "Contents": "See you at the café?",
+    "Attachments": ""
+  }
+]

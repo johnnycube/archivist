@@ -1,0 +1,9 @@
+[{
+  "header": "Assistant",
+  "title": "Said set a timer for ten minutes",
+  "subtitles": [{"name": "Sure, ten minutes, starting now."}],
+  "time": "2024-02-02T18:45:10.000Z",
+  "products": ["Assistant"],
+  "activityControls": ["Web & App Activity"],
+  "details": [{"name": "Audio recording"}]
+}]

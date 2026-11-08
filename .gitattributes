@@ -1,0 +1,6 @@
+* text=auto eol=lf
+*.sh text eol=lf
+*.bat text eol=crlf
+*.{png,jpg,jpeg,gif,webp,ico,icns,pdf,woff,woff2,ttf,otf,jar,keystore,zip,gz,tgz,7z,mp3,mp4,wav,ogg,so,dylib,dll,exe,bin} binary
+# WhatsApp exports are CRLF on disk; the fixtures must stay byte-exact.
+providers/whatsapp/testdata/**/_chat.txt -text

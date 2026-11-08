@@ -1,0 +1,11 @@
+{
+  "jane_doe": [
+    {"From": "jane_doe", "Media Type": "TEXT", "Created": "2024-01-31 12:34:56 UTC", "Content": "Are you coming tonight?", "Conversation Title": null, "IsSender": false, "Created(microseconds)": 1706704496123456, "IsSaved": true, "Media IDs": ""},
+    {"From": "johnny_example", "Media Type": "TEXT", "Created": "2024-01-31 12:35:10 UTC", "Content": "Yes, see you at 8", "Conversation Title": null, "IsSender": true, "Created(microseconds)": 1706704510000001, "IsSaved": false, "Media IDs": ""},
+    {"From": "jane_doe", "Media Type": "MEDIA", "Created": "2024-01-31 12:36:00 UTC", "Content": "", "Conversation Title": null, "IsSender": false, "Created(microseconds)": 1706704560000002, "IsSaved": false, "Media IDs": "b~EXAMPLEMEDIAID0001"}
+  ],
+  "0a1b2c3d-0000-4000-8000-00000000abcd": [
+    {"From": "max_mustermann", "Media Type": "TEXT", "Created": "2024-02-02 18:00:00 UTC", "Content": "Are you coming tonight?", "Conversation Title": "Bike Crew", "IsSender": false, "Created(microseconds)": 1706896800000003, "IsSaved": true, "Media IDs": ""},
+    {"From": "johnny_example", "Media Type": "TEXT", "Created": "2024-02-02 18:00:00 UTC", "Content": "Are you coming tonight?", "Conversation Title": "Bike Crew", "IsSender": true, "Created(microseconds)": 1706896800000004, "IsSaved": true, "Media IDs": ""}
+  ]
+}

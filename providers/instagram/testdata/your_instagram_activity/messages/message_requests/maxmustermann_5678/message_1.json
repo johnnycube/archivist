@@ -1,0 +1,10 @@
+{
+  "participants": [{ "name": "Max Mustermann" }, { "name": "Johnny" }],
+  "messages": [
+    { "sender_name": "Max Mustermann", "timestamp_ms": 1650021000000, "content": "Hi, is the bike still for sale?", "is_geoblocked_for_viewer": false }
+  ],
+  "title": "Max Mustermann",
+  "is_still_participant": true,
+  "thread_path": "message_requests/maxmustermann_5678",
+  "magic_words": []
+}

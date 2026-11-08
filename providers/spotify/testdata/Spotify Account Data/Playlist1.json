@@ -1,0 +1,59 @@
+{
+  "playlists": [
+    {
+      "name": "Road Trip",
+      "lastModifiedDate": "2021-01-31",
+      "items": [
+        {
+          "track": {
+            "trackName": "Night Train",
+            "artistName": "The Placeholders",
+            "albumName": "Rails",
+            "trackUri": "spotify:track:1111111111111111111111"
+          },
+          "episode": null,
+          "localTrack": null,
+          "addedDate": "2021-01-30"
+        },
+        {
+          "track": null,
+          "episode": {
+            "episodeName": "Episode 12: Test Data",
+            "showName": "The Sample Show",
+            "episodeUri": "spotify:episode:3333333333333333333333"
+          },
+          "localTrack": null,
+          "addedDate": "2021-01-31"
+        }
+      ],
+      "description": "For the drive",
+      "numberOfFollowers": 2
+    },
+    {
+      "name": "Focus",
+      "lastModifiedDate": "2020-12-24",
+      "items": [
+        {
+          "track": {
+            "trackName": "Night Train",
+            "artistName": "The Placeholders",
+            "albumName": "Rails",
+            "trackUri": "spotify:track:1111111111111111111111"
+          },
+          "episode": null,
+          "localTrack": null,
+          "addedDate": "2021-01-30"
+        }
+      ],
+      "description": null,
+      "numberOfFollowers": 0
+    },
+    {
+      "name": "Empty One",
+      "lastModifiedDate": "2020-01-01",
+      "items": [],
+      "description": null,
+      "numberOfFollowers": 0
+    }
+  ]
+}

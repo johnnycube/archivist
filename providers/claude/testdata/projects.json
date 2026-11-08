@@ -1,0 +1,29 @@
+[
+  {
+    "uuid": "p1",
+    "name": "Archivist",
+    "description": "Self-hosted export archive",
+    "is_private": true,
+    "is_starter_project": false,
+    "prompt_template": "You are helping with a Go codebase.",
+    "created_at": "2024-06-01T08:00:00.000000Z",
+    "updated_at": "2024-06-10T08:00:00.000000Z",
+    "creator": { "uuid": "acct-1", "full_name": "Sample User" },
+    "docs": [
+      { "uuid": "d1", "filename": "ARCHITECTURE.md", "content": "# Architecture\nHexagonal.", "created_at": "2024-06-01T08:05:00.000000Z" },
+      { "uuid": "d2", "filename": "notes.txt", "content": "Remember the never-drop rule.", "created_at": "2024-06-02T08:05:00.000000Z" }
+    ]
+  },
+  {
+    "uuid": "p2",
+    "name": "Empty project",
+    "description": "",
+    "is_private": false,
+    "is_starter_project": true,
+    "prompt_template": "",
+    "created_at": "2024-07-01T08:00:00.000000Z",
+    "updated_at": "2024-07-01T08:00:00.000000Z",
+    "creator": { "uuid": "acct-1", "full_name": "Sample User" },
+    "docs": []
+  }
+]

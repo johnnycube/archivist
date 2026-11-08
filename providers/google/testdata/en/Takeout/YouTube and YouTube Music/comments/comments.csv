@@ -1,0 +1,4 @@
+Comment ID,Channel ID,Comment Create Timestamp,Price,Parent Comment ID,Video ID,Comment Text
+UgxSYNTHETIC0000000001,UCselfselfselfselfselfse,2024-03-01T18:30:00.123456+00:00,0,,aaaaaaaaa01,"{""text"":""Great tutorial, thanks!""}"
+UgxSYNTHETIC0000000002,UCselfselfselfselfselfse,2024-03-02T08:00:00+00:00,0,,aaaaaaaaa04,"{""takeoutSegments"":[{""text"":""See ""},{""text"":""2:31"",""videoLink"":{""startTimeSeconds"":151}},{""text"":"" for the trick""}]}"
+UgxSYNTHETIC0000000001.reply01,UCselfselfselfselfselfse,2024-03-02T09:15:00+00:00,0,UgxSYNTHETIC0000000001,aaaaaaaaa01,"{""text"":""Replying to ""},{""text"":""@someone"",""mention"":{""externalChannelId"":""UCcccccccccccccccccccccc""}}"

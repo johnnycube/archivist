@@ -1,0 +1,11 @@
+{
+  "type": "FeatureCollection",
+  "features": [{
+    "geometry": {"coordinates": [13.4000000, 52.5000000], "type": "Point"},
+    "properties": {
+      "address": "Example Lane 2, 10999 Berlin, Germany",
+      "name": "Home"
+    },
+    "type": "Feature"
+  }]
+}

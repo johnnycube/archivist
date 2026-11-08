@@ -1,0 +1,3 @@
+# Review ownership (fleetlint repo/codeowners). Gitea reads .gitea/CODEOWNERS;
+# the GitHub repository uses .github/CODEOWNERS.
+* @johnny

@@ -1,0 +1,44 @@
+[
+  {
+    "header": "YouTube",
+    "title": "Searched for wheel truing stand",
+    "titleUrl": "https://www.youtube.com/results?search_query\u003dwheel+truing+stand",
+    "time": "2024-03-01T18:21:00.000Z",
+    "products": [
+      "YouTube"
+    ],
+    "activityControls": [
+      "YouTube search history"
+    ]
+  },
+  {
+    "header": "YouTube",
+    "title": "Searched for café racer \u0026 co",
+    "titleUrl": "https://www.youtube.com/results?search_query\u003dcaf%C3%A9+racer+%26+co",
+    "time": "2024-03-03T09:00:00.250Z",
+    "products": [
+      "YouTube"
+    ],
+    "activityControls": [
+      "YouTube search history"
+    ]
+  },
+  {
+    "header": "YouTube",
+    "title": "Watched How to true a bicycle wheel",
+    "titleUrl": "https://www.youtube.com/watch?v\u003daaaaaaaaa01",
+    "subtitles": [
+      {
+        "name": "Example Bike Shop",
+        "url": "https://www.youtube.com/channel/UCaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    ],
+    "time": "2024-03-01T18:22:11.123Z",
+    "products": [
+      "YouTube"
+    ],
+    "activityControls": [
+      "YouTube watch history"
+    ]
+  }
+]

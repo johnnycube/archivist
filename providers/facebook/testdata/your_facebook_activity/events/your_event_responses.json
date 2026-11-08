@@ -1,0 +1,7 @@
+{
+  "event_responses_v2": {
+    "events_joined": [{ "name": "Summer party", "start_timestamp": 1650100000, "end_timestamp": 0 }],
+    "events_declined": [{ "name": "Winter party", "start_timestamp": 1640100000, "end_timestamp": 1640110000 }],
+    "events_interested": []
+  }
+}

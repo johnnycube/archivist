@@ -1,0 +1,40 @@
+{
+  "id": "22222222-2222-4222-8222-222222222222",
+  "import_job_id": "11111111-1111-4111-8111-111111111111",
+  "ingested_at": "2024-03-09T15:30:00.123Z",
+  "source_id": "whatsapp",
+  "external_id": "msg-1",
+  "type": "whatsapp.message",
+  "category": "message",
+  "occurred_at": "2024-03-09T14:30:00.123Z",
+  "actor": "Anna",
+  "title": "Book Club",
+  "body": "See \u003cyou\u003e \u0026 \"them\" there",
+  "thread_external_id": "chat:Book Club",
+  "parent_external_id": "msg-0",
+  "targets": [
+    {
+      "relation": "replied_to",
+      "target_source": "whatsapp",
+      "target_external_id": "msg-0",
+      "target_url": "https://example.org/0"
+    }
+  ],
+  "media": [
+    {
+      "blob_key": "IMG-0001.jpg",
+      "mime": "image/jpeg",
+      "url": "https://example.org/i.jpg"
+    },
+    {
+      "blob_key": "notes.pdf"
+    }
+  ],
+  "metadata": {
+    "edited": true,
+    "n": 3,
+    "reactions": [
+      "+1"
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "Friends": [
+    {"Username": "jane_doe", "Display Name": "Jane Doe", "Creation Timestamp": "2022-05-01 10:00:00 UTC", "Last Modified Timestamp": "2023-01-01 00:00:00 UTC", "Source": "Added by Username"},
+    {"Username": "max_mustermann", "Display Name": "Max Mustermann", "Creation Timestamp": "2022-06-01 10:00:00 UTC", "Last Modified Timestamp": "2022-06-01 10:00:00 UTC", "Source": "Added by Quick Add"}
+  ],
+  "Friend Requests Sent": [
+    {"Username": "erika_m", "Display Name": "Erika M.", "Creation Timestamp": "2024-01-02 08:00:00 UTC", "Last Modified Timestamp": "2024-01-02 08:00:00 UTC", "Source": "Added by Search"}
+  ],
+  "Blocked Users": [
+    {"Username": "spam_account_1", "Display Name": "Win A Phone", "Creation Timestamp": "2023-03-03 03:03:03 UTC", "Last Modified Timestamp": "2023-03-04 04:04:04 UTC", "Source": "Added by Username"}
+  ],
+  "Deleted Friends": [
+    {"Username": "max_mustermann", "Display Name": "Max Mustermann", "Creation Timestamp": "2022-06-01 10:00:00 UTC", "Last Modified Timestamp": "2022-06-01 10:00:00 UTC", "Source": "Added by Quick Add"}
+  ],
+  "Hidden Friend Suggestions": [
+    {"Username": "someone_else", "Display Name": "Someone Else", "Creation Timestamp": "2023-09-09 09:09:09 UTC", "Last Modified Timestamp": "2023-09-09 09:09:09 UTC", "Source": "Unknown"}
+  ],
+  "Shortcuts": []
+}

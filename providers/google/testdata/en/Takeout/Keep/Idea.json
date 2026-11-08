@@ -1,0 +1,13 @@
+{
+  "color": "BLUE",
+  "isTrashed": false,
+  "isPinned": false,
+  "isArchived": true,
+  "textContent": "Build a truing stand from an old fork.\nSee the wiki link.",
+  "textContentHtml": "Build a truing stand from an old fork.<br>See the wiki link.",
+  "title": "Idea",
+  "userEditedTimestampUsec": 1709900000000000,
+  "createdTimestampUsec": 1709850000000000,
+  "annotations": [{"description": "Example Bike Wiki", "source": "WEBLINK", "title": "Wheel Truing 101", "url": "https://bikes.example.org/wiki/wheel-truing"}],
+  "attachments": [{"filePath": "Idea.png", "mimetype": "image/png"}]
+}

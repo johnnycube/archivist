@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Archivist — Architecture</title>
+<link rel="icon" href="frontend/static/favicon.svg" type="image/svg+xml">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
+<style>
+  :root{
+    --bg:#0f1115; --panel:#161a21; --panel2:#1c222b; --border:#2a323d;
+    --ink:#e7ecf3; --muted:#9aa7b8; --accent:#6ea8fe; --accent2:#7ee0b8;
+    --warn:#f0b866; --code:#0b0d11; --chip:#222a35;
+  }
+  @media (prefers-color-scheme: light){
+    :root{ --bg:#f6f8fb; --panel:#ffffff; --panel2:#f0f3f8; --border:#dce3ec;
+      --ink:#16202b; --muted:#5a6b7e; --accent:#2563eb; --accent2:#0f9d6b;
+      --warn:#a86a12; --code:#0b0d11; --chip:#e8eef6; }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-text-size-adjust:100%}
+  .wrap{max-width:980px;margin:0 auto;padding:28px 20px 80px}
+  header.hero{padding:34px 26px;border-radius:18px;
+    background:linear-gradient(140deg,#1b2a4a 0%,#122031 60%,#0f1115 100%);
+    border:1px solid var(--border);margin-bottom:26px}
+  @media (prefers-color-scheme: light){
+    header.hero{background:linear-gradient(140deg,#dbe8ff,#eef4ff 60%,#ffffff)}}
+  .hero h1{margin:0 0 8px;font-size:30px;letter-spacing:-.02em}
+  .hero p{margin:0;color:var(--muted);max-width:66ch}
+  .tags{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+  .tag{font-size:12.5px;padding:5px 11px;border-radius:999px;background:var(--chip);
+    border:1px solid var(--border);color:var(--ink)}
+  h2{font-size:22px;margin:40px 0 6px;letter-spacing:-.01em;scroll-margin-top:16px}
+  h2 .n{color:var(--accent);font-variant-numeric:tabular-nums;margin-right:10px}
+  h3{font-size:17px;margin:24px 0 6px;color:var(--ink)}
+  p{color:var(--ink)}
+  .lead{color:var(--muted)}
+  section{background:var(--panel);border:1px solid var(--border);border-radius:16px;
+    padding:22px 24px;margin-top:16px}
+  ul{padding-left:20px}
+  li{margin:5px 0}
+  code{background:var(--panel2);border:1px solid var(--border);border-radius:6px;
+    padding:1px 6px;font:13.5px/1.5 "SF Mono",ui-monospace,Menlo,Consolas,monospace}
+  pre{background:var(--code);color:#e7ecf3;border:1px solid var(--border);border-radius:12px;
+    padding:16px 18px;overflow:auto;font:13px/1.6 "SF Mono",ui-monospace,Menlo,Consolas,monospace}
+  pre code{background:none;border:none;padding:0;color:inherit}
+  .diagram{background:var(--panel2);border:1px solid var(--border);border-radius:14px;
+    padding:14px;margin:14px 0;overflow-x:auto}
+  .mermaid{display:flex;justify-content:center}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+  th,td{text-align:left;padding:8px 11px;border-bottom:1px solid var(--border);vertical-align:top}
+  th{color:var(--muted);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.03em}
+  .note{border-left:3px solid var(--warn);background:var(--panel2);padding:12px 16px;
+    border-radius:0 10px 10px 0;color:var(--ink);margin:14px 0}
+  .note b{color:var(--warn)}
+  .ok{border-left:3px solid var(--accent2)}
+  .ok b{color:var(--accent2)}
+  .toc{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;margin-top:8px}
+  .toc a{color:var(--ink);text-decoration:none;padding:9px 12px;border:1px solid var(--border);
+    border-radius:10px;background:var(--panel2);font-size:14px;display:flex;gap:8px}
+  .toc a:hover{border-color:var(--accent)}
+  .toc a .n{color:var(--accent);font-variant-numeric:tabular-nums}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media (max-width:680px){.grid2{grid-template-columns:1fr}}
+  .card{background:var(--panel2);border:1px solid var(--border);border-radius:12px;padding:14px 16px}
+  .card h3{margin-top:0}
+  .kicker{color:var(--accent2);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.05em}
+  /* ---- as-built vs planned ------------------------------------------------
+     Everything solid is in the code today. Anything from the original v2 plan
+     that is NOT built is kept, but drawn dashed and tagged "planned". */
+  .planned{border:1.5px dashed var(--warn)!important;background:transparent!important}
+  tr.planned{border:none!important}
+  tr.planned td{border-top:1.5px dashed var(--warn);border-bottom:1.5px dashed var(--warn);color:var(--muted)}
+  tr.planned td:first-child{border-left:1.5px dashed var(--warn)}
+  tr.planned td:last-child{border-right:1.5px dashed var(--warn)}
+  li.planned{border:none!important;color:var(--muted);list-style:none;position:relative}
+  li.planned::before{content:"";position:absolute;left:-16px;top:.55em;width:8px;height:8px;border:1.5px dashed var(--warn);border-radius:2px}
+  .pl{display:inline-block;font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;
+    color:var(--warn);border:1.5px dashed var(--warn);border-radius:999px;padding:0 7px;margin-left:6px;vertical-align:1px;white-space:nowrap}
+  .built{display:inline-block;font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;
+    color:var(--accent2);border:1.5px solid var(--accent2);border-radius:999px;padding:0 7px;margin-left:6px;vertical-align:1px;white-space:nowrap}
+  .legend{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;font-size:14px}
+  .legend .sw{display:inline-block;width:34px;height:20px;border-radius:6px;vertical-align:-5px;margin-right:8px}
+  .legend .sw.b{border:1.5px solid var(--accent);background:var(--panel2)}
+  .legend .sw.p{border:1.5px dashed var(--warn)}
+  /* mermaid nodes carrying class "planned" (flowchart classDef / classDiagram cssClass) */
+  .mermaid g.planned rect,.mermaid g.planned path,.mermaid g.planned polygon,.mermaid g.planned circle,
+  .mermaid g.planned .label-container,.mermaid g.planned .outer-path{stroke:#f0b866!important;stroke-dasharray:6 4!important;fill:transparent!important}
+  footer{color:var(--muted);font-size:13px;text-align:center;margin-top:36px}
+  a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="kicker">Architecture &middot; as built, with the v2 plan marked</div>
+  <h1>Archivist</h1>
+  <p>A self-hosted, multi-user app that ingests the official <b>data-export archives</b> of your external
+     accounts, normalizes every data type into one canonical <b>Event</b> model, and shows it all as a single
+     searchable, filterable timeline. Every source is its own provider package. Live API pulls are part of the
+     plan, not of the code.</p>
+  <div class="tags">
+    <span class="tag">Go 1.26 &middot; net/http &middot; one binary</span>
+    <span class="tag">SvelteKit SPA, embedded</span>
+    <span class="tag">PostgreSQL 16</span>
+    <span class="tag">Hexagonal (ports &amp; adapters)</span>
+    <span class="tag">Universal Event model</span>
+    <span class="tag">14 export-bundle providers</span>
+  </div>
+</header>
+
+<section>
+  <div class="kicker">How to read this page</div>
+  <div class="legend" style="margin-top:10px">
+    <span><span class="sw b"></span><b>Solid</b> &mdash; built: it is in the code today</span>
+    <span><span class="sw p"></span><b>Dashed</b> <span class="pl">planned</span> &mdash; designed in plan v2, <b>not implemented</b></span>
+  </div>
+  <p class="lead" style="margin-bottom:0">This page used to show only the original design (Go 1.23, chi, sqlc, River, Meilisearch, MFA, RLS,
+    envelope encryption) and contradicted the code. The design is kept, but every box, row and bullet that is not built is
+    now dashed. The authority is the <b>Implementation status</b> table and the per-section status notes in
+    <code>ARCHITECTURE.md</code>; for the code as it is see <code>README.md</code> and <code>docs/development.md</code>.
+    This file is hand-written HTML (not generated) &mdash; update it together with <code>ARCHITECTURE.md</code>.</p>
+</section>
+
+<section>
+  <div class="kicker">Contents</div>
+  <div class="toc">
+    <a href="#principles"><span class="n">1</span> Goals &amp; principles</a>
+    <a href="#stack"><span class="n">2</span> Tech stack</a>
+    <a href="#system"><span class="n">3</span> System architecture</a>
+    <a href="#providers"><span class="n">4</span> Provider abstraction</a>
+    <a href="#bundles"><span class="n">5</span> Export-bundle ingestion</a>
+    <a href="#model"><span class="n">6</span> Event model &amp; taxonomy</a>
+    <a href="#pipeline"><span class="n">7</span> Ingestion pipeline</a>
+    <a href="#search"><span class="n">8</span> Timeline &amp; search</a>
+    <a href="#secrets"><span class="n">9</span> Secrets encryption <span class="pl">planned</span></a>
+    <a href="#hardening"><span class="n">10</span> Security hardening</a>
+    <a href="#roadmap"><span class="n">11</span> Roadmap</a>
+  </div>
+</section>
+
+<h2 id="principles"><span class="n">1</span>Goals &amp; principles</h2>
+<section>
+  <ul>
+    <li><b>Everything is an Event.</b> The atomic unit is an <code>Event</code> &mdash; one thing that happened on a source at a time. A Reddit comment, a post, an upvote, a downvote, a saved link, a subscription, a tweet, a like, a DM, an Instagram story, a Facebook reaction &mdash; all Events, distinguished by a namespaced <code>type</code> (e.g. <code>reddit.vote.down</code>, <code>twitter.like</code>).</li>
+    <li><b>One timeline to rule them all.</b> Every Event, from every source and every ingestion path, lands in the same model. The UI never needs to know how it arrived.</li>
+    <li><b>Respect all data.</b> An export contains dozens of data types; every file and record is accounted for &mdash; mapped to a typed Event, captured as a <b>generic Event</b> (never hidden), or ignored <i>with a logged reason</i>. Each import emits a <b>coverage report</b>. Nothing is silently dropped.</li>
+    <li><b>Providers are isolated and pluggable.</b> Adding a source = adding one package implementing a fixed interface.</li>
+    <li><b>Multiple accounts per source.</b> Every Event is scoped to a <i>connection</i> (<code>ACCOUNT</code> row).</li>
+    <li><b>Raw-first, reprocess anytime.</b> The uploaded ZIP is preserved write-once; <i>Reprocess</i> re-runs the current providers over it, so a better mapper reaches old imports (even promoting generic &rarr; typed) with no re-upload. <span class="built">built, at archive granularity</span></li>
+    <li class="planned">Per-record raw storage (<code>raw_records</code>) and re-normalizing from it. <span class="pl">planned</span></li>
+    <li><b>Hardened by default.</b> Tenant scoping by <code>user_id</code> in every port method (contract-tested), Argon2id, revocable hashed sessions, CSRF protection, rate limits, security headers, upload limits and quotas. <span class="built">built</span></li>
+    <li class="planned"><b>Secrets are the crown jewels.</b> Per-user envelope encryption, MFA, SSRF/egress controls, sandboxed providers. Nothing secret is stored today (no API keys or OAuth tokens). <span class="pl">planned</span></li>
+  </ul>
+  <div class="note">
+    <b>The two ingestion realities.</b> There's no single "download my history" REST API for most consumer accounts, so a source can be fed by <b>(1) live API/OAuth pull</b> <span class="pl">planned</span> for platforms with usable APIs (incremental, rate-limited, often paid) and/or <b>(2) platform export bundle</b> <span class="built">built</span> &mdash; the GDPR/CCPA "download your data" ZIP, which is how you get comprehensive history and the long tail of types (likes, votes, saves, follows, seen-history) that APIs rarely expose. All 14 providers (Reddit, ChatGPT, Claude, Twitter/X, Instagram, Facebook, Google Takeout/YouTube, WhatsApp, TikTok, Telegram, Snapchat, Spotify, LinkedIn, Discord) are export-bundle providers; how to request each export is in <code>docs/exports.md</code>.
+  </div>
+</section>
+
+<h2 id="stack"><span class="n">2</span>Technology stack</h2>
+<section>
+  <table>
+    <tr><th>Concern</th><th>In use</th><th>Notes</th></tr>
+    <tr><td>Backend</td><td>Go 1.26 &middot; <code>net/http</code> (<code>ServeMux</code> patterns, <code>CrossOriginProtection</code>)</td><td>One static binary (<code>CGO_ENABLED=0</code>), UI embedded via <code>//go:embed</code>. No router dependency.</td></tr>
+    <tr><td>DB access</td><td><code>database/sql</code> + <code>lib/pq</code></td><td>Hand-written SQL in <code>internal/adapters/postgres</code>; an in-memory adapter serves dev and tests.</td></tr>
+    <tr><td>Store</td><td>PostgreSQL 16</td><td>Relational model, <code>jsonb</code> metadata, <code>tsvector</code> full-text search.</td></tr>
+    <tr><td>Migrations</td><td>pressly/goose v3</td><td>SQL files in <code>migrations/</code>, forward-only.</td></tr>
+    <tr><td>Jobs</td><td>Own <code>app.Jobs</code> adapter on <code>import_jobs</code></td><td><code>FOR UPDATE SKIP LOCKED</code>, bounded crash recovery; one background worker goroutine.</td></tr>
+    <tr><td>Search</td><td>PostgreSQL FTS, <code>simple</code> configuration</td><td>No stemming, not language-aware.</td></tr>
+    <tr><td>Blobs</td><td>Local filesystem or S3-compatible (minio-go v7)</td><td>Original ZIPs + extracted media, write-once.</td></tr>
+    <tr><td>Passwords / limits</td><td>Argon2id (<code>x/crypto</code>) &middot; <code>x/time/rate</code></td><td>Hashes with weaker parameters are upgraded on login.</td></tr>
+    <tr><td>Frontend</td><td>SvelteKit 2 &middot; JavaScript &middot; <code>adapter-static</code> SPA</td><td>Built into <code>internal/webui/dist</code>, served by the Go binary.</td></tr>
+    <tr><td>Dependencies</td><td>Pinned by <code>go.sum</code>, <b>not vendored</b></td><td>Prefer the standard library or a well-known maintained library.</td></tr>
+    <tr><td>Deploy</td><td>Docker Compose: app + postgres</td><td>Blobs on the app volume; an S3 store (SILO) is an optional overlay. TLS is left to the operator's reverse proxy.</td></tr>
+    <tr class="planned"><td>HTTP router <span class="pl">planned</span></td><td>chi</td><td>Not adopted: <code>net/http</code> has been enough.</td></tr>
+    <tr class="planned"><td>DB access <span class="pl">planned</span></td><td>sqlc + pgx</td><td>Not adopted.</td></tr>
+    <tr class="planned"><td>Jobs <span class="pl">planned</span></td><td>River (Postgres-backed)</td><td>The <code>app.Jobs</code> port is shaped so River could replace the queue adapter.</td></tr>
+    <tr class="planned"><td>Search <span class="pl">planned</span></td><td>Meilisearch / Typesense</td><td>Typo-tolerant facets; Postgres FTS was the planned fallback and is what exists.</td></tr>
+    <tr class="planned"><td>Edge <span class="pl">planned</span></td><td>Caddy in the compose stack</td><td>Auto-TLS; security headers and rate limiting are done in the app instead.</td></tr>
+    <tr class="planned"><td>Secrets <span class="pl">planned</span></td><td>AES-256-GCM envelope encryption</td><td>See &sect;9 &mdash; nothing secret is stored yet.</td></tr>
+  </table>
+  <p class="lead">"Postgres-native where possible" held: the whole thing runs on <i>just</i> Postgres plus a data directory.</p>
+</section>
+
+<h2 id="system"><span class="n">3</span>System architecture</h2>
+<section>
+  <p class="lead">As built: one Go process. The code is hexagonal &mdash; <code>internal/domain</code> &larr; <code>internal/app</code> (use cases + ports) &larr; <code>internal/adapters/*</code>; <code>cmd/server/main.go</code> is the composition root. Providers make <b>no network calls at all</b>; export bundles enter through upload. Dashed boxes are the parts of the v2 plan that do not exist.</p>
+  <div class="diagram"><pre class="mermaid">
+flowchart TB
+    UI["SvelteKit SPA (embedded in the binary)<br/>timeline, filters, search, import, export guides"]
+    CADDY["Caddy: TLS, headers"]:::planned
+    subgraph bin["archivist (one Go process)"]
+        REST["adapters/rest<br/>net/http, sessions, CSRF,<br/>rate limits, security headers"]
+        APP["internal/app<br/>AuthService, ImportService,<br/>TimelineService"]
+        WORKER["app.Worker<br/>background goroutine"]
+        ENG["adapters/engine + internal/bundle<br/>unzip, route, extract, normalize, dedupe"]
+        CAT["adapters/catalog<br/>explicit list of providers/*"]
+        SCHED["Scheduler<br/>periodic API syncs"]:::planned
+        CRYPTO["Secrets service<br/>(envelope enc.)"]:::planned
+    end
+    subgraph providers["providers/* (14 bundle providers, emit only)"]
+        P1["reddit, chatgpt,<br/>claude, twitter"]
+        P2["instagram, facebook<br/>(shared meta code)"]
+        P3["google, whatsapp, tiktok,<br/>telegram, snapchat, spotify,<br/>linkedin, discord"]
+    end
+    subgraph data["Storage"]
+        PG[("PostgreSQL<br/>users, accounts, events,<br/>event_targets, media,<br/>import_jobs, sessions")]
+        STAGE[("Staging<br/>DATA_DIR/uploads")]
+        BLOB[("Blobs, write-once<br/>DATA_DIR/blobs or S3<br/>original ZIPs + media")]
+        MEILI[("Meilisearch")]:::planned
+    end
+    ext["External APIs<br/>(API pull, egress allowlist)"]:::planned
+    UI --> REST --> APP
+    UI -.-> CADDY -.-> REST
+    APP --> PG
+    REST -->|upload streams| STAGE
+    WORKER --> STAGE
+    WORKER --> ENG --> CAT --> P1 & P2 & P3
+    WORKER --> PG
+    WORKER --> BLOB
+    APP -->|media| BLOB
+    SCHED -.-> WORKER
+    APP -.-> MEILI
+    APP -.-> CRYPTO -.-> PG
+    P1 -.-> ext
+    classDef planned stroke:#f0b866,stroke-dasharray:6 4,fill:transparent
+  </pre></div>
+  <p class="lead">Dotted arrows lead to or from planned components.</p>
+</section>
+
+<h2 id="providers"><span class="n">4</span>The provider abstraction</h2>
+<section>
+  <p>A provider is a self-contained Go package under <code>providers/&lt;name&gt;/</code>. It parses one source's export and <b>emits</b> raw records and Events; it never touches the database, the blob store or the network. The contracts live in <code>internal/provider</code> (the SPI) and <code>internal/domain</code> (<code>Descriptor</code>, <code>Event</code>). Of the four ingestion modes only <code>Bundle</code> is implemented.</p>
+  <div class="diagram"><pre class="mermaid">
+classDiagram
+    class Provider {
+        &lt;&lt;interface&gt;&gt;
+        +Descriptor() Descriptor
+        +Capabilities() Capabilities
+        +Normalize(ctx, RawRecord) list
+    }
+    class BundleProvider {
+        &lt;&lt;interface&gt;&gt;
+        +Extractors() list
+    }
+    class Extractor {
+        &lt;&lt;interface&gt;&gt;
+        +Match(memberPath) bool
+        +Extract(memberPath, reader, emit) error
+    }
+    class AttachmentMatcher {
+        &lt;&lt;optional&gt;&gt;
+        +IsAttachment(memberPath) bool
+    }
+    class Descriptor {
+        +ID string
+        +DisplayName string
+        +IngestionModes list
+        +EventTypes list
+    }
+    class APIProvider {
+        &lt;&lt;planned&gt;&gt;
+        +ValidateCredentials(ctx, creds) error
+        +Sync(ctx, SyncContext) error
+    }
+    Provider --> Descriptor
+    BundleProvider --|> Provider
+    BundleProvider --> Extractor
+    BundleProvider ..> AttachmentMatcher
+    APIProvider ..|> Provider
+    cssClass "APIProvider" planned
+  </pre></div>
+  <div class="grid2">
+    <div class="card"><h3>Split fetch from map <span class="built">built</span></h3><p class="lead">Keeping <code>Extract</code> (read the member) separate from <code>Normalize</code> (map to Events) is what enables <b>reprocessing</b>: the original ZIP is preserved, so the current providers can be re-run over it later &mdash; including turning previously-generic records into typed Events once a mapper exists.</p></div>
+    <div class="card"><h3>Registration <span class="built">built</span></h3><p class="lead"><code>internal/adapters/catalog/catalog.go</code> lists every provider explicitly (no <code>init()</code> self-registration). A provider panic is recovered by the worker and fails only that import.</p></div>
+    <div class="card planned"><h3>API / OAuth / webhook providers <span class="pl">planned</span></h3><p class="lead"><code>APIPull</code>, <code>OAuth</code> and <code>Webhook</code> modes, credential schemas, rate limits, sync cursors. No provider makes a network call today.</p></div>
+    <div class="card planned"><h3>Subprocess plugins <span class="pl">planned</span></h3><p class="lead">gRPC (<code>go-plugin</code>) providers in a seccomp/landlock sandbox with a per-provider egress allowlist &mdash; identical interface, transparent promotion.</p></div>
+  </div>
+  <h3>Provider package layout (as built)</h3>
+  <pre><code>providers/reddit/
+  reddit.go         // Descriptor, Capabilities, Extractors (one per CSV), Normalize
+  reddit_test.go    // golden test: bundle.NewImporter(New()).ImportZip(...)
+  testdata/         // synthetic export fixtures
+providers/internal/meta/       // shared by facebook + instagram (mojibake repair, Meta JSON shapes)
+providers/internal/jsonwalk/   // path-tracking streaming JSON walker (tiktok, snapchat, telegram)</code></pre>
+  <p class="lead">The plan's one-file-per-extractor layout (<code>extractors/comments.go</code>, <code>normalize.go</code>, &hellip;) was not adopted: every provider is one package with a single main file.</p>
+</section>
+
+<h2 id="bundles"><span class="n">5</span>Platform export-bundle ingestion</h2>
+<section>
+  <p class="lead">An export archive is unlike an API: one ZIP holds many files, each a different data type in a different format. The bundle importer turns that into a uniform stream of raw records.</p>
+  <div class="diagram"><pre class="mermaid">
+flowchart TB
+    ZIP["Uploaded export ZIP(s)<br/>staged on disk, preserved write-once in the blob store"]
+    UNP["Unpacker: stream members, never extracted to disk<br/>entry / size / nesting limits"]
+    ROUTE{"Router: match member path to an Extractor"}
+    subgraph adapters["Format adapters (reusable)"]
+        CSV["CSV"]
+        JSON["JSON / streamed JSON arrays"]
+        JSJSON["JS-wrapped JSON: strip window.YTD.*"]
+        TXT["Plain-text transcripts (WhatsApp)"]
+        HTML["HTML tables"]:::planned
+    end
+    EX["Provider Extractors: member to RawRecord(s)"]
+    GEN["Generic capture<br/>unmatched to source.unknown<br/>(name, size, hash, preview)"]
+    MEDIA["Media / attachments to the blob store"]
+    COV["Coverage report<br/>members, counts per type, generic,<br/>duplicates, new vs re-imported"]
+    NORM["Provider.Normalize to Event(s)<br/>in-archive dedupe"]
+    DB[("Postgres events<br/>upsert on (user, source, external_id)")]
+    JOB[("import_jobs row<br/>status, progress, coverage")]
+    RAW[("raw_records")]:::planned
+    ZIP --> UNP --> ROUTE
+    ROUTE -->|matched| EX
+    ROUTE -->|media| MEDIA
+    ROUTE -->|no match| GEN
+    EX --> CSV & JSON & JSJSON & TXT
+    EX -.-> HTML
+    EX --> NORM
+    GEN --> NORM
+    EX --> COV
+    GEN --> COV
+    NORM --> DB
+    NORM -.-> RAW
+    COV --> JOB
+    classDef planned stroke:#f0b866,stroke-dasharray:6 4,fill:transparent
+  </pre></div>
+  <div class="note ok">
+    <b>Respect-all-data guarantees.</b> Every archive member is routed. Matched members produce <b>typed</b> Events; unmatched members are <b>captured raw</b> and surfaced as <b>generic Events</b> (<code>type = source.unknown</code>) so they're visible and filterable, never skipped. Every import writes a <b>coverage report</b> (members seen, records per type, generic-captured members, duplicates, new vs. re-imported) shown on the Import page. The preserved ZIP means adding an extractor later and pressing <i>Reprocess</i> re-maps old imports with no re-upload. A generic Event keeps the member's name, size, content hash and a short preview &mdash; the full bytes stay in the preserved ZIP.
+  </div>
+  <div class="grid2">
+    <div class="card"><h3>Shared format adapters</h3><ul>
+      <li><b>CSV</b> &mdash; Reddit's export is a bundle of CSVs.</li>
+      <li><b>JSON / JSONL</b> &mdash; Meta (FB/IG) is folder-per-category JSON.</li>
+      <li><b>JS-wrapped JSON</b> &mdash; Twitter/X <code>data/*.js</code> files are <code>window.YTD.name.part0 = [ ... ]</code>; strip prefix, parse.</li>
+      <li><b>Streaming walkers</b> &mdash; multi-GB single-file exports (TikTok, Telegram, Snapchat, Spotify) are read token by token.</li>
+      <li class="planned"><b>HTML tables</b> &mdash; Meta's / Google's HTML export variants. Today an HTML export lands in <code>&lt;source&gt;.unknown</code>; users are told to choose JSON (<code>docs/exports.md</code>). <span class="pl">planned</span></li>
+    </ul></div>
+    <div class="card"><h3>Encoding repair (Meta)</h3><p class="lead">Facebook/Instagram JSON mis-encodes UTF-8 (bytes escaped as latin-1), producing mojibake. The Meta adapter re-encodes latin-1 &rarr; UTF-8 on read so text is stored correctly. New sources usually need only mapping logic, not parsing plumbing.</p></div>
+  </div>
+</section>
+
+<h2 id="model"><span class="n">6</span>Canonical Event model &amp; taxonomy</h2>
+<section>
+  <p class="lead">Everything funnels into a small set of tables. Source-specific shape lives in <code>events.metadata</code> (JSONB); the timeline reads only these tables. <code>account_id</code> is the connection; events also carry <code>user_id</code> directly. Threading uses the text columns <code>thread_external_id</code> / <code>parent_external_id</code>.</p>
+  <div class="diagram"><pre class="mermaid">
+erDiagram
+    USER ||--o{ ACCOUNT : owns
+    USER ||--o{ SESSION : "logs in with"
+    USER ||--o{ IMPORT_JOB : uploads
+    ACCOUNT ||--o{ IMPORT_JOB : "imported into"
+    ACCOUNT ||--o{ EVENT : produces
+    IMPORT_JOB ||--o{ EVENT : "last written by"
+    EVENT ||--o{ EVENT_TARGET : "acts on"
+    EVENT ||--o{ MEDIA : has
+    EVENT {
+        uuid id PK
+        uuid user_id FK
+        text source_id
+        text external_id "dedupe key with user + source"
+        text type "reddit.comment | twitter.like"
+        text category "content|reaction|save|connection|message|media|profile|consumption|other"
+        timestamptz occurred_at "nullable: undated sort last"
+        text actor
+        text title
+        text body "nullable"
+        text thread_external_id
+        text parent_external_id
+        jsonb metadata
+        tsvector search_vector
+    }
+    EVENT_TARGET {
+        text relation "liked|voted_up|voted_down|saved|followed|replied_to"
+        text target_source
+        text target_external_id
+        text target_url
+    }
+    IMPORT_JOB {
+        text status "queued|running|done|error"
+        int parts
+        bigint bytes_done
+        jsonb coverage
+    }
+    SESSION {
+        bytea token_hash "SHA-256 of the cookie token"
+        timestamptz expires_at
+    }
+  </pre></div>
+  <div class="card planned" style="margin:14px 0">
+    <h3>Planned tables <span class="pl">planned</span></h3>
+    <p class="lead" style="margin:0"><code>RAW_RECORD</code> (per-record payload + content hash), <code>IMPORT_BUNDLE</code>, <code>SYNC_RUN</code>, <code>THREAD</code>, <code>TAG</code> / <code>EVENT_TAG</code>, <code>SECRET</code> / <code>ENCRYPTION_KEY</code>, <code>EVENT_PARTICIPANT</code>, a <code>SOURCE</code> table. Migration 0001 created most of them up front; nothing ever used them and migration 0006 drops the empty ones. A feature that gets built re-adds what it needs in its own migration. (Mermaid cannot dash ER entities, so they are listed here instead of drawn.)</p>
+  </div>
+  <h3>Event taxonomy &mdash; an event can be <i>anything</i></h3>
+  <p class="lead"><code>type</code> is precise and namespaced; <code>category</code> is the coarse facet the UI filters on.</p>
+  <table>
+    <tr><th>Category</th><th>Example types</th><th>Body?</th><th>Target?</th></tr>
+    <tr><td><code>content</code></td><td>reddit.post, reddit.comment, twitter.tweet, instagram.post, facebook.post</td><td>yes</td><td>reply &rarr; parent</td></tr>
+    <tr><td><code>message</code></td><td>twitter.dm, reddit.message, instagram.dm, chatgpt.message</td><td>yes</td><td>conversation</td></tr>
+    <tr><td><code>reaction</code></td><td>twitter.like, reddit.vote.up, reddit.vote.down, facebook.reaction</td><td>no</td><td><b>required</b></td></tr>
+    <tr><td><code>save</code></td><td>reddit.save, twitter.bookmark, instagram.saved</td><td>no</td><td><b>required</b></td></tr>
+    <tr><td><code>connection</code></td><td>twitter.follow, reddit.subscribe, facebook.friend</td><td>no</td><td><b>required</b></td></tr>
+    <tr><td><code>media</code></td><td>instagram.story, instagram.media, facebook.photo</td><td>caption</td><td>&mdash;</td></tr>
+    <tr><td><code>profile</code></td><td>*.profile.update, *.username.change</td><td>maybe</td><td>&mdash;</td></tr>
+    <tr><td><code>consumption</code></td><td>instagram.seen, reddit.view, watch history</td><td>no</td><td>required</td></tr>
+    <tr><td><code>other</code></td><td>source.unknown (generic capture)</td><td>maybe</td><td>maybe</td></tr>
+  </table>
+  <div class="note ok">
+    <b>Your policy, encoded.</b> All types are ingested (including high-volume votes/seen-history); filtering is a <b>view concern</b> &mdash; category facets show/hide so a firehose of upvotes never buries your posts. Unmapped data is captured raw and shown as generic Events. <code>EVENT_TARGET</code> powers cross-source questions: "everything I ever <b>saved</b>", "every <b>reaction</b> in 2024", "everyone I <b>followed</b>".
+  </div>
+</section>
+
+<h2 id="pipeline"><span class="n">7</span>Ingestion pipeline</h2>
+<section>
+  <div class="diagram"><pre class="mermaid">
+sequenceDiagram
+    participant U as Browser
+    participant API as adapters/rest + ImportService
+    participant ST as Staging (DATA_DIR/uploads)
+    participant Q as import_jobs (Postgres queue)
+    participant W as app.Worker
+    participant P as Engine + Provider
+    participant B as Blob store
+    participant DB as Postgres events
+    U->>API: POST /api/import (source, label, ZIP parts)
+    API->>API: Admit: source, quotas, free disk (before the body is read)
+    API->>ST: stream parts to disk
+    API->>Q: enqueue job
+    API-->>U: 202 + job (UI polls /api/imports/{id})
+    W->>Q: claim (FOR UPDATE SKIP LOCKED)
+    W->>B: preserve original ZIP write-once (archives/job-id)
+    W->>P: unzip, route members, extract
+    loop each record (typed or generic)
+        P-->>W: Event(s) + targets + media refs
+        W->>DB: upsert EVENT (user, source, external_id)
+        W->>B: store media
+    end
+    W->>Q: progress, coverage report, done / error
+    Note over W,Q: on boot, jobs orphaned in "running" are requeued (bounded attempts)
+    Note over U,DB: PLANNED, not built: River queue, API/OAuth Sync with cursors, RAW_RECORD upserts, Meilisearch indexing
+  </pre></div>
+  <p class="lead">Idempotent upserts: re-importing the same or an overlapping export never duplicates events, and each import reports new vs. already-archived. <b>Reprocess</b> re-runs the current providers over the preserved ZIP; <b>Delete</b> removes an import, its archive and the events only it contributed.</p>
+  <div class="card planned"><p class="lead" style="margin:0"><span class="pl" style="margin-left:0">planned</span> Incremental API sync via opaque cursors; durable retries with backoff (River); a re-normalize job that rebuilds Events from stored raw records; file imports and API pulls sharing one pipeline.</p></div>
+</section>
+
+<h2 id="search"><span class="n">8</span>Timeline, search &amp; filtering</h2>
+<section>
+  <ul>
+    <li><b>Timeline query</b> is keyset-paginated on <code>(occurred_at desc, id desc)</code>, undated events last &mdash; stable at tens of millions of Events (export firehoses are large).</li>
+    <li><b>Facets:</b> source, <b>category</b>, precise <code>type</code>, date range and free text &mdash; composable, with counts. A per-day histogram drives the overview chart. Category is the primary lever for taming high-volume types.</li>
+    <li><b>Search:</b> PostgreSQL full-text search (<code>tsvector</code>, <code>simple</code> configuration &mdash; no stemming).</li>
+    <li><b>Media</b> is streamed from the blob store with a sandboxing CSP.</li>
+    <li class="planned">Per-user Meilisearch/Typesense index; facets on connection, participants, thread, tags and target. <span class="pl">planned</span></li>
+    <li class="planned">Per-thread conversation view and cross-source activity views built on <code>EVENT_TARGET</code> (targets are stored and returned with each event, but there is no view yet). <span class="pl">planned</span></li>
+  </ul>
+</section>
+
+<h2 id="secrets"><span class="n">9</span>Secrets &mdash; envelope encryption <span class="pl">planned</span></h2>
+<section class="planned">
+  <div class="note"><b>Not implemented.</b> There is no secrets service, KEK or DEK in the code, because there is nothing to protect yet: no API keys or OAuth tokens are stored, and export bundles carry no long-lived credential. Blob encryption at rest is not implemented either &mdash; use disk or bucket encryption. The design below is what API connectors would need.</div>
+  <div class="diagram"><pre class="mermaid">
+flowchart LR
+    MK["Master key (KEK): env / KMS / age, never in DB"]
+    DEK["Per-user DEK: random 256-bit"]
+    SEC["Secret: API key / OAuth token"]
+    MK -->|wraps AES-GCM| DEK
+    DEK -->|stored wrapped| DB1[("encryption_keys")]
+    DEK -->|encrypts| SEC
+    SEC -->|ciphertext + nonce| DB2[("secrets")]
+    subgraph runtime["At sync time"]
+        L1["load wrapped DEK"] --> L2["unwrap with KEK in memory"] --> L3["decrypt secret"] --> L4["use, then zeroize"]
+    end
+  </pre></div>
+  <ul>
+    <li><b>KEK</b> from env / secrets manager / <code>age</code> key &mdash; never in the DB. Losing the DB alone doesn't expose secrets.</li>
+    <li><b>Per-user DEK</b> stored <i>wrapped</i> by the KEK &mdash; scopes blast radius, enables rotation.</li>
+    <li><b>Secrets</b> are AES-256-GCM under the DEK; decrypted in memory only during a sync, then zeroized. Never logged.</li>
+    <li><b>Export bundles</b> carry no long-lived credential &mdash; they're uploaded files; at-rest protection is the operator's disk/bucket encryption today.</li>
+  </ul>
+</section>
+
+<h2 id="hardening"><span class="n">10</span>Security &amp; multi-tenant hardening</h2>
+<section>
+  <div class="grid2">
+    <div class="card"><h3>Tenant isolation</h3><ul>
+      <li>Every user-owned row carries <code>user_id</code>; every port method takes the user id and scopes by it.</li>
+      <li>Shared contract tests (<code>internal/adapters/porttest</code>) exercise that against the in-memory and PostgreSQL adapters.</li>
+      <li>Blob and staging namespaces are keyed by user id.</li>
+      <li class="planned"><b>Postgres RLS</b> as defense-in-depth (the decorative policies of 0001 were dropped in 0005). <span class="pl">planned</span></li>
+      <li class="planned">Per-user DEKs. <span class="pl">planned</span></li>
+    </ul></div>
+    <div class="card"><h3>Auth &amp; sessions</h3><ul>
+      <li>Argon2id; weaker hashes are upgraded on login; dummy hash for unknown emails.</li>
+      <li>Opaque revocable server-side sessions, stored as SHA-256; <code>HttpOnly</code> <code>SameSite=Lax</code> cookies, <code>Secure</code> + <code>__Host-</code> on HTTPS.</li>
+      <li>CSRF: <code>net/http.CrossOriginProtection</code> (Sec-Fetch-Site / Origin), not tokens.</li>
+      <li>Per-IP token-bucket limits plus a per-account login throttle; signup switch.</li>
+      <li class="planned"><b>TOTP MFA</b>, WebAuthn/passkeys, OIDC, password reset by e-mail. <span class="pl">planned</span></li>
+    </ul></div>
+    <div class="card"><h3>Untrusted upload handling</h3><ul>
+      <li>Export ZIPs are attacker-influenced: limits on entries, total and per-member bytes, JSON record size and nesting depth.</li>
+      <li>Members are streamed, never extracted to disk; blob keys are hashed; staging goes through <code>os.Root</code>.</li>
+      <li>Upload size cap, per-user quotas and a free-disk check before the body is read; idle timeout on uploads.</li>
+      <li class="planned">Resource-limited parser process, compression-ratio limit, server-side encryption of stored ZIPs. <span class="pl">planned</span></li>
+    </ul></div>
+    <div class="card"><h3>HTTP edge, egress &amp; supply chain</h3><ul>
+      <li>CSP, HSTS (with Secure cookies), COOP, <code>X-Frame-Options</code>, <code>Permissions-Policy</code>, <code>nosniff</code>; <code>/healthz</code> <code>/readyz</code> <code>/metrics</code>.</li>
+      <li>Providers make no network calls, so there is no egress to police yet.</li>
+      <li>Dependencies pinned by <code>go.sum</code>, <b>not vendored</b>; non-root container; <code>make vuln</code> runs <code>govulncheck</code> + <code>npm audit</code> by hand.</li>
+      <li class="planned">Per-provider egress allowlist with SSRF-blocked ranges (needed once API pulls exist). <span class="pl">planned</span></li>
+      <li class="planned">Envelope-encrypted secrets; append-only audit log; backup tooling. <span class="pl">planned</span></li>
+      <li class="planned">Automated <code>govulncheck</code>/Dependabot, SBOM, read-only container filesystem, bundled Caddy/TLS. <span class="pl">planned</span></li>
+    </ul></div>
+  </div>
+</section>
+
+<h2 id="roadmap"><span class="n">11</span>Delivery roadmap</h2>
+<section>
+  <div class="grid2">
+    <div class="card"><h3>Phase 1 &mdash; Core + chats + first bundles <span class="built">built</span></h3><p class="lead">Event model + targets, auth, provider catalog, the <b>bundle importer</b> (unpacker + router + CSV/JSON/JS-JSON adapters + coverage report), async pipeline, timeline + filters + search (Postgres FTS). <code>chatgpt</code>, <code>claude</code> and <code>reddit</code>, against synthetic fixtures. <br><span class="pl" style="margin-left:0">planned</span> MFA, secrets service.</p></div>
+    <div class="card"><h3>Phase 2 &mdash; The big social exports <span class="built">mostly built</span></h3><p class="lead"><code>twitter/x</code> (tweets, likes, follows, followers), <code>facebook</code> (verified against a real export) and <code>instagram</code>, with encoding repair. Beyond the plan, eight more bundle providers: <code>google</code> (YouTube), <code>whatsapp</code>, <code>tiktok</code>, <code>telegram</code>, <code>snapchat</code>, <code>spotify</code>, <code>linkedin</code>, <code>discord</code> (fixtures only). <br><span class="pl" style="margin-left:0">planned</span> X bookmarks and DMs; X <b>OAuth API pull</b> for incremental sync.</p></div>
+    <div class="card"><h3>Phase 3 &mdash; Hardening &amp; scale <span class="built">partly built</span></h3><p class="lead">Upload/zip-bomb hardening, revocable hashed sessions, Argon2id, rate limiting, CSRF, security headers, tenant-scoping contract tests, S3 blob store, goose migrations. <br><span class="pl" style="margin-left:0">planned</span> Sandboxed subprocess providers, RLS, audit-log UI, WebAuthn, Meilisearch, per-account scheduling.</p></div>
+    <div class="card planned"><h3>Later <span class="pl">planned</span></h3><p class="lead">Assisted/automated export capture, webhook ingestion, unified-archive export of <i>your</i> data, cross-source dedupe/merge (same link saved on two platforms). Nearer-term provider work is ranked in <code>docs/platforms.md</code>; first on that list is verifying the fixture-only providers against real exports.</p></div>
+  </div>
+</section>
+
+<footer>Archivist architecture &middot; as built, with plan v2 marked as <span class="pl" style="margin-left:0">planned</span> &middot; Go + SvelteKit + PostgreSQL. Hand-written companion to <code>ARCHITECTURE.md</code> (whose Implementation status table is authoritative). Diagrams need network access to load Mermaid from cdnjs.</footer>
+
+</div>
+<script>
+  mermaid.initialize({
+    startOnLoad:true,
+    theme: (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "default",
+    securityLevel:"loose",
+    flowchart:{useMaxWidth:true, htmlLabels:true}
+  });
+</script>
+</body>
+</html>

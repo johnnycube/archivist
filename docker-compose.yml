@@ -1,0 +1,69 @@
+# Archivist: app + PostgreSQL. Blobs (original archives, extracted media) are
+# kept on the app's volume; for an S3 object store add deploy/compose.s3.yml
+# (see the header of that file).
+#
+# Settings: copy .env.example to .env next to this file (compose reads it).
+# First account: docker compose exec app /app/archivist admin create-user -email you@example.com
+services:
+  db:
+    # Pinned to a minor release so a `pull` never changes the database under you
+    # silently; bump deliberately (minor upgrades within 16.x need no dump/restore).
+    # Keep in step with PG_IMAGE in the Makefile.
+    image: postgres:16.15-alpine
+    # Deliberately no `ports:` — the database is reachable only from the
+    # compose network. For a local psql use `docker compose exec db psql -U archivist`.
+    environment:
+      POSTGRES_USER: archivist
+      POSTGRES_PASSWORD: archivist
+      POSTGRES_DB: archivist
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U archivist -d archivist"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  app:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgres://archivist:archivist@db:5432/archivist?sslmode=disable
+      MIGRATE: "1"
+      ADDR: ":8080"
+      DATA_DIR: /data
+      # Blob store: the filesystem under /data/blobs (this volume). For an S3
+      # object store add deploy/compose.s3.yml, which sets BLOB_S3_*.
+      #
+      # The settings below come from .env, so a production setup changes
+      # .env only (README, "Running it for real"). The defaults suit a first
+      # start on http://localhost: plain-HTTP cookies, no proxy in front.
+      # Behind an HTTPS reverse proxy set COOKIE_SECURE=1, TRUSTED_PROXIES=1
+      # (the number of proxies in front) and PUBLIC_URL.
+      COOKIE_SECURE: ${COOKIE_SECURE:-0}
+      TRUSTED_PROXIES: ${TRUSTED_PROXIES:-0}
+      PUBLIC_URL: ${PUBLIC_URL:-}
+      ALLOW_SIGNUP: ${ALLOW_SIGNUP:-0}
+      # Require "Authorization: Bearer <token>" on /metrics (min. 16 chars).
+      METRICS_TOKEN: ${METRICS_TOKEN:-}
+      # Soft heap ceiling for the Go runtime: the GC works harder as the heap
+      # approaches it instead of letting a large import grow until the kernel
+      # OOM-kills the container. Imports stream, but JSON records (up to
+      # 64 MiB each), Argon2id logins (19 MiB each) and S3 part buffers add up.
+      # If you set a container memory limit, keep this at ~80-90 % of it.
+      GOMEMLIMIT: 1GiB
+    volumes:
+      - appdata:/data          # staged uploads, and the blobs unless S3 is used
+    ports:
+      # Loopback only: put an HTTPS reverse proxy in front for anything else.
+      # Published on all interfaces, the plain-HTTP port would bypass the
+      # proxy — and with TRUSTED_PROXIES set, anyone reaching it directly
+      # could choose their own X-Forwarded-For (rate limits, login throttle).
+      - "127.0.0.1:8080:8080"
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  appdata:

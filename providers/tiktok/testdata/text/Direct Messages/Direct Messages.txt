@@ -1,0 +1,15 @@
+>>> Chat History with jane_doe:
+Date: 2024-02-01 20:06:00
+From: johnny_example
+Content: https://www.tiktokv.com/share/video/7300000000000000002/
+
+Date: 2024-02-01 20:08:00
+From: johnny_example
+Content: See you tomorrow
+
+>>> Chat History with max_mustermann:
+Date: 2024-02-01 20:07:30
+From: max_mustermann
+Content: Hi from Max
+second line
+

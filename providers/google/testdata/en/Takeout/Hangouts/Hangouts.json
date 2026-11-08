@@ -1,0 +1,35 @@
+{
+  "conversations": [{
+    "conversation": {
+      "conversation_id": {"id": "UgxSYNTHETICconv0001"},
+      "conversation": {
+        "id": {"id": "UgxSYNTHETICconv0001"},
+        "type": "STICKY_ONE_TO_ONE",
+        "participant_data": [
+          {"id": {"gaia_id": "100000000000000000001", "chat_id": "100000000000000000001"}, "fallback_name": "Alice Example"},
+          {"id": {"gaia_id": "100000000000000000002", "chat_id": "100000000000000000002"}, "fallback_name": "Me Example"}
+        ]
+      }
+    },
+    "events": [{
+      "conversation_id": {"id": "UgxSYNTHETICconv0001"},
+      "sender_id": {"gaia_id": "100000000000000000001", "chat_id": "100000000000000000001"},
+      "timestamp": "1468515874000000",
+      "event_id": "evt-0001",
+      "chat_message": {"message_content": {"segment": [
+        {"type": "TEXT", "text": "Look at this: "},
+        {"type": "LINK", "text": "bikes.example.org", "link_data": {"link_target": "https://bikes.example.org/"}},
+        {"type": "LINE_BREAK"},
+        {"type": "TEXT", "text": "second line"}
+      ]}},
+      "event_type": "REGULAR_CHAT_MESSAGE"
+    }, {
+      "conversation_id": {"id": "UgxSYNTHETICconv0001"},
+      "sender_id": {"gaia_id": "100000000000000000002", "chat_id": "100000000000000000002"},
+      "timestamp": "1468515900000000",
+      "event_id": "evt-0002",
+      "hangout_event": {"event_type": "START_HANGOUT", "media_type": "AUDIO_VIDEO"},
+      "event_type": "HANGOUT_EVENT"
+    }]
+  }]
+}

@@ -1,0 +1,15 @@
+# .fleetlint.yaml: https://github.com/fleetlint/fleetlint
+# `make check` runs `fleetlint check`; the pre-commit hook runs it on every commit.
+version: 1
+extends:
+  - fleetlint:oss
+facts:
+  # Tier 1: a production service, held to the full recommended policy.
+  tier: 1
+  # The repository is published as github.com/johnnycube/archivist; the oss
+  # preset and the public pin keep the public/* rules (license, security
+  # policy, contributing, ...) on wherever the repository is checked.
+  visibility: public
+# discovered: stacks=[go] forge=gitea layout=nested release=no taskrunner=make container=none
+# scopes (each checked as its own project): frontend. List them under `scopes:` to change that.
+# Facts are re-detected on every run; pin one under `facts:` only when detection is wrong.

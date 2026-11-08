@@ -1,0 +1,69 @@
+// Platform identity: brand color + glyph per source. Single source of truth for
+// color-coding events across the timeline, sidebar, and modal.
+export const PLATFORMS = {
+  reddit: { label: 'Reddit', color: '#ff4500', glyph: 'R' },
+  twitter: { label: 'Twitter / X', color: '#1d9bf0', glyph: 'X' },
+  instagram: { label: 'Instagram', color: '#e1306c', glyph: 'I' },
+  facebook: { label: 'Facebook', color: '#1877f2', glyph: 'F' },
+  chatgpt: { label: 'ChatGPT', color: '#10a37f', glyph: 'G' },
+  claude: { label: 'Claude', color: '#d97757', glyph: 'C' },
+  google: { label: 'Google / YouTube', color: '#ff0000', glyph: 'Y' },
+  whatsapp: { label: 'WhatsApp', color: '#25d366', glyph: 'W' },
+  tiktok: { label: 'TikTok', color: '#fe2c55', glyph: 'T' },
+  telegram: { label: 'Telegram', color: '#26a5e4', glyph: 'T' },
+  snapchat: { label: 'Snapchat', color: '#fffc00', glyph: 'S' },
+  linkedin: { label: 'LinkedIn', color: '#0a66c2', glyph: 'L' },
+  discord: { label: 'Discord', color: '#5865f2', glyph: 'D' },
+  spotify: { label: 'Spotify', color: '#1db954', glyph: 'S' }
+};
+
+export function platform(sourceId) {
+  return (
+    PLATFORMS[sourceId] || {
+      label: sourceId || 'unknown',
+      color: '#8b93a7',
+      glyph: (sourceId || '?')[0].toUpperCase()
+    }
+  );
+}
+
+// Chart palette: brand hues snapped into the validated lightness band for the
+// dark surface (#0f1115). Brand colors alone cannot work here — three sources
+// are green, five are blue, several are red/pink — so CHART_COLORS holds a
+// chart-only color wherever the brand hue falls outside the band or sits too
+// close to a neighbour. CHART_STACK is the fixed stacking order; it keeps
+// similar hues (the blues, the greens, red/pink vs green) non-adjacent.
+// Validated with the dataviz palette checker on adjacent pairs: CVD ΔE ≥ 8,
+// normal-vision ΔE ≥ 15, contrast ≥ 3:1 — re-run it when changing colors or
+// order. Non-adjacent sources can still look alike (the legend and tooltip
+// carry identity), so color is never the only cue.
+export const CHART_STACK = [
+  'reddit',
+  'chatgpt',
+  'twitter',
+  'claude',
+  'facebook',
+  'instagram',
+  'discord',
+  'spotify',
+  'linkedin',
+  'google',
+  'telegram',
+  'snapchat',
+  'whatsapp',
+  'tiktok'
+];
+
+const CHART_COLORS = {
+  claude: '#cf6a45',
+  spotify: '#1aa64b',
+  linkedin: '#2f7fd6',
+  google: '#e53935',
+  telegram: '#1f98d6',
+  snapchat: '#9e9100',
+  whatsapp: '#16a394'
+};
+
+export function chartColor(sourceId) {
+  return CHART_COLORS[sourceId] || platform(sourceId).color;
+}

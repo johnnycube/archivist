@@ -1,0 +1,8 @@
+# Run the published image instead of building locally:
+#   docker compose -f docker-compose.yml -f deploy/compose.registry.yml up -d
+# deploy/deploy.sh does exactly that, with a pull and a readiness wait.
+# ARCHIVIST_IMAGE comes from the environment or .env (next to docker-compose.yml).
+services:
+  app:
+    image: ${ARCHIVIST_IMAGE:-ghcr.io/johnnycube/archivist:latest}
+    pull_policy: always

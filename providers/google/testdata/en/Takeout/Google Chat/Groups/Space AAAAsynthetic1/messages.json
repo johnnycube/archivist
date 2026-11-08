@@ -1,0 +1,19 @@
+{
+  "messages": [{
+    "creator": {"name": "Alice Example", "email": "alice@example.com", "user_type": "Human"},
+    "created_date": "Thursday, July 14, 2016 at 5:04:34 PM UTC",
+    "text": "Anyone up for a ride on Saturday?",
+    "topic_id": "topic-1",
+    "message_id": "msg-0001",
+    "message_state": "PRESENT"
+  }, {
+    "creator": {"name": "Bob Example", "email": "bob@example.com", "user_type": "Human"},
+    "created_date": "Thursday, July 14, 2016 at 5:06:00 PM UTC",
+    "text": "Sure, here is the route.",
+    "topic_id": "topic-1",
+    "message_id": "msg-0002",
+    "attached_files": [{"original_name": "route.gpx", "export_name": "route.gpx"}],
+    "annotations": [{"url_metadata": {"url": {"private_do_not_access_or_else_safe_url_wrapped_value": "https://routes.example.com/1"}, "title": "Route 1"}}],
+    "reactions": [{"emoji": {"unicode": "👍"}, "reactor_emails": ["alice@example.com"]}]
+  }]
+}

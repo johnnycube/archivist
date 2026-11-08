@@ -1,0 +1,15 @@
+[{
+  "header": "Chrome",
+  "title": "Visited Example Domain",
+  "titleUrl": "https://example.com/",
+  "time": "2023-11-14T22:13:20.000Z",
+  "products": ["Chrome"],
+  "activityControls": ["Web & App Activity"]
+}, {
+  "header": "Chrome",
+  "title": "Searched for chrome flags",
+  "titleUrl": "https://www.google.com/search?q=chrome+flags",
+  "time": "2023-11-14T22:14:00.000Z",
+  "products": ["Chrome"],
+  "activityControls": ["Web & App Activity"]
+}]

@@ -1,0 +1,25 @@
+[
+  {
+    "ts": "2018-06-01T10:00:00Z",
+    "username": "sampleuser",
+    "platform": "Android OS 8.0",
+    "ms_played": 180000,
+    "conn_country": "DE",
+    "ip_addr_decrypted": "198.51.100.23",
+    "user_agent_decrypted": "unknown",
+    "master_metadata_track_name": "Old Song",
+    "master_metadata_album_artist_name": "Vintage Band",
+    "master_metadata_album_album_name": "Archive",
+    "spotify_track_uri": "spotify:track:5555555555555555555555",
+    "episode_name": null,
+    "episode_show_name": null,
+    "spotify_episode_uri": null,
+    "reason_start": "clickrow",
+    "reason_end": "endplay",
+    "shuffle": false,
+    "skipped": null,
+    "offline": false,
+    "offline_timestamp": 0,
+    "incognito_mode": false
+  }
+]

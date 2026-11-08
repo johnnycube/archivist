@@ -1,0 +1,5 @@
+ID,Timestamp,Contents,Attachments
+1100000000000000001,2023-06-01 08:00:00.500000+00:00,"Hello, server
+second line",
+1100000000000000002,2023-06-01 08:01:00,pic,https://cdn.discordapp.example/attachments/9/9/bike.jpg
+1100000000000000003,not a date,timestamp from the snowflake,
