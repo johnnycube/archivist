@@ -35,6 +35,21 @@
         "node"
       ],
       "groupName": "node toolchain"
+    },
+    {
+      "description": "Frontend packages in one PR: every lockfile change moves the UI version hash, so each update needs a rebuilt internal/webui/dist (ADR 0011); grouping makes that one `make web` per batch",
+      "matchManagers": [
+        "npm"
+      ],
+      "matchDepTypes": [
+        "dependencies",
+        "devDependencies"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "groupName": "frontend dependencies"
     }
   ]
 }
