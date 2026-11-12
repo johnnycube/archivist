@@ -17,17 +17,17 @@
     "@sveltejs/adapter-static": "^4.0.0",
     "@sveltejs/kit": "^3.1.0",
     "@sveltejs/vite-plugin-svelte": "^7.3.1",
-    "@vitest/coverage-v8": "5.0.5",
-    "eslint": "10.13.0",
-    "eslint-plugin-svelte": "3.23.1",
-    "globals": "17.13.0",
-    "knip": "6.42.1",
+    "@vitest/coverage-v8": "5.1.0",
+    "eslint": "10.14.0",
+    "eslint-plugin-svelte": "3.24.1",
+    "globals": "17.14.0",
+    "knip": "6.44.2",
     "license-checker-rseidelsohn": "5.0.1",
     "prettier": "3.9.10",
     "prettier-plugin-svelte": "4.1.1",
     "svelte": "^5.57.2",
     "vite": "^8.3.5",
-    "vitest": "5.0.5"
+    "vitest": "5.1.0"
   },
   "engines": {
     "node": "^20.19.0 || >=22.12.0"
