@@ -2,9 +2,6 @@
   "src/lib/components/Cluster.svelte": {
     "svelte/infinite-reactive-loop": {
       "count": 2
-    },
-    "svelte/prefer-svelte-reactivity": {
-      "count": 1
     }
   },
   "src/lib/components/EventModal.svelte": {
@@ -17,20 +14,12 @@
       "count": 1
     }
   },
-  "src/lib/components/Overview.svelte": {
-    "svelte/prefer-svelte-reactivity": {
-      "count": 1
-    }
-  },
   "src/lib/components/RangeBar.svelte": {
     "complexity": {
       "count": 2
     },
     "no-useless-assignment": {
       "count": 1
-    },
-    "svelte/prefer-svelte-reactivity": {
-      "count": 3
     }
   },
   "src/lib/components/RichText.svelte": {
@@ -49,19 +38,11 @@
     },
     "no-useless-assignment": {
       "count": 2
-    },
-    "svelte/prefer-svelte-reactivity": {
-      "count": 3
     }
   },
   "src/routes/+layout.svelte": {
     "svelte/require-each-key": {
       "count": 1
-    }
-  },
-  "src/routes/+page.svelte": {
-    "svelte/prefer-svelte-reactivity": {
-      "count": 3
     }
   },
   "src/routes/help/exports/+page.svelte": {
