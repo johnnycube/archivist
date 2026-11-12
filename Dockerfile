@@ -41,7 +41,7 @@ RUN mkdir -p /out/data
 #    No tzdata package is needed: the server imports time/tzdata, so the IANA
 #    zone database (~410 KiB) is embedded in the binary and ?tz=Europe/Berlin
 #    resolves here exactly as it does on a developer's machine.
-FROM alpine:3.24@sha256:be2656061b536c1883c4034790e21d0a09c5aaaf51968b89368a3c0371ea2c9a
+FROM alpine:3.24@sha256:f59abe656b692d901e184be3445e084786602108599d2a51d229c0f5a48c71bf
 COPY --from=build --chown=10001:10001 /out/data /data
 WORKDIR /app
 COPY --from=build /out/archivist /out/archivist-blobs /app/
