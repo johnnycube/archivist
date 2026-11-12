@@ -20,7 +20,7 @@ RUN cd frontend && npm run build   # adapter-static → /src/internal/webui/dist
 #    their own layer (pinned by go.sum), so it is cached until go.mod/go.sum
 #    change. Same Go major.minor as mise.toml (scripts/check-toolchain.sh).
 #    -trimpath keeps build-machine paths out of the binaries (reproducible builds).
-FROM --platform=$BUILDPLATFORM golang:1.27-alpine@sha256:fa3d596898d9f126af7c01d14ee7597bab3f39cccf392ef36b69fe77cd681f18 AS build
+FROM --platform=$BUILDPLATFORM golang:1.27-alpine@sha256:eb61c3873c97416fff0116553fff65d67a3549f72e11d9758849a689cdd8b523 AS build
 ARG TARGETOS TARGETARCH
 WORKDIR /src
 COPY go.mod go.sum ./

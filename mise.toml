@@ -4,7 +4,7 @@
 # Keep go and node in step with the Dockerfile's base images
 # (scripts/check-toolchain.sh, part of `make lint`, enforces it).
 [tools]
-go = "1.27.3"
+go = "1.27.4"
 node = "26.13.0"
 golangci-lint = "2.15.0"
 "go:golang.org/x/vuln/cmd/govulncheck" = "1.9.0"
