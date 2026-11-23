@@ -19,4 +19,4 @@ pinact = "5.0.2"
 prek = "0.5.11"
 git-cliff = "2.14.2"
 resvg = "0.50.0" # make icons: renders frontend/static/favicon.svg into the PNG/ICO set
-"github:fleetlint/fleetlint" = "0.11.0"
+"github:fleetlint/fleetlint" = "0.11.1"
