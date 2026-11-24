@@ -156,20 +156,19 @@
           {:else}
             <table>
               <thead>
-                <tr
-                  ><th>When</th><th>Source</th><th>Label</th><th>Status</th><th>Events</th><th
-                  ></th></tr
-                >
+                <tr>
+                  <th>When</th><th>Source</th><th>Label</th><th>Status</th><th>Events</th><th></th>
+                </tr>
               </thead>
               <tbody>
                 {#each jobs as j (j.id)}
                   <tr>
                     <td class="muted">{fmtDate(j.created_at)}</td>
-                    <td
-                      >{j.source}{#if j.parts > 1}<div class="muted detail">
+                    <td>
+                      {j.source}{#if j.parts > 1}<div class="muted detail">
                           {j.parts} parts
-                        </div>{/if}</td
-                    >
+                        </div>{/if}
+                    </td>
                     <td class="muted">{j.label}</td>
                     <td>
                       <span class="badge st-{j.status}">{j.status}</span>
@@ -199,14 +198,17 @@
                         <button
                           title="Copy the coverage report (counts and file names, no content) for an issue"
                           on:click={() => copyReport(j)}
-                          >{copied === j.id ? 'Copied' : 'Copy report'}</button
                         >
+                          {copied === j.id ? 'Copied' : 'Copy report'}
+                        </button>
                       {/if}
                       {#if j.status === 'done' || j.status === 'error'}
                         <button
                           title="Re-derive this import's events from the preserved archive"
-                          on:click={() => reprocess(j)}>Reprocess</button
+                          on:click={() => reprocess(j)}
                         >
+                          Reprocess
+                        </button>
                       {/if}
                       {#if (j.status === 'queued' || j.status === 'running') && !j.cancel_requested}
                         <button title="Stop this import" on:click={() => cancel(j)}>Cancel</button>

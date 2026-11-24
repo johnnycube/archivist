@@ -80,9 +80,9 @@
   <h3>Import an export</h3>
   <label for="imp-source">Source</label>
   <select id="imp-source" bind:value={impSource}>
-    {#each sources as s}<option value={s.id}
-        >{s.display_name} ({s.id}){s.maturity === 'verified' ? '' : ' — experimental'}</option
-      >{/each}
+    {#each sources as s}<option value={s.id}>
+        {s.display_name} ({s.id}){s.maturity === 'verified' ? '' : ' — experimental'}
+      </option>{/each}
   </select>
   {#if current && current.maturity !== 'verified'}
     <div class="hint muted experimental">
@@ -90,9 +90,9 @@
       synthetic exports only. Whatever it does not recognise is still kept (as
       <code>{current.id}.unknown</code>), and the archive is preserved, so a later fix reaches your
       data by reprocessing. Please
-      <a href="https://github.com/johnnycube/archivist/issues/new?template=export.yml"
-        >report what it gets wrong</a
-      >.
+      <a href="https://github.com/johnnycube/archivist/issues/new?template=export.yml">
+        report what it gets wrong
+      </a>.
     </div>
   {/if}
   {#if guide}
@@ -114,9 +114,9 @@
   {#if files.length > 1}<div class="muted parts">
       {files.length} parts, imported as one archive
     </div>{/if}
-  <button class="primary" style="width:100%;margin-top:10px" disabled={busy} on:click={doImport}
-    >Import</button
-  >
+  <button class="primary" style="width:100%;margin-top:10px" disabled={busy} on:click={doImport}>
+    Import
+  </button>
   {#if busy}
     <div class="bar" class:indeterminate={pct === null}>
       <div style="width:{pct === null ? 100 : pct}%"></div>

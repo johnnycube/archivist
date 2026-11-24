@@ -62,8 +62,10 @@
               href={safeHref(tgt.target_url)}
               target="_blank"
               rel="noopener noreferrer"
-              on:click|stopPropagation>{tgt.target_url}</a
+              on:click|stopPropagation
             >
+              {tgt.target_url}
+            </a>
           {:else}
             <span>{tgt.target_url}</span>
           {/if}

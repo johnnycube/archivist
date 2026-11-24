@@ -312,16 +312,20 @@
         class:on={s.current}
         aria-current={s.current ? 'true' : undefined}
         title={s.title}
-        on:click={() => pick(s.from, s.to)}>{s.label}</button
+        on:click={() => pick(s.from, s.to)}
       >
+        {s.label}
+      </button>
     {/each}
     {#if pinned}
       <button
         class="reset"
         on:click={() => pick('', '')}
         title="Clear the date range (back to all time)"
-        aria-label="Clear the date range">✕</button
+        aria-label="Clear the date range"
       >
+        ✕
+      </button>
     {/if}
   </div>
 

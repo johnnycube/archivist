@@ -54,8 +54,10 @@
                   <a
                     href={mediaUrl(event, i) || externalUrl(event, i)}
                     target="_blank"
-                    rel="noopener noreferrer">📎 {attachmentName(m)}</a
-                  >{#if !mediaUrl(event, i)}
+                    rel="noopener noreferrer"
+                  >
+                    📎 {attachmentName(m)}
+                  </a>{#if !mediaUrl(event, i)}
                     <span class="muted">(external link)</span>{/if}
                 {:else}
                   📎 {attachmentName(m)} <span class="muted">(not stored)</span>
@@ -75,8 +77,10 @@
               <a
                 href={safeHref(event.targets[0].target_url)}
                 target="_blank"
-                rel="noopener noreferrer">{event.targets[0].target_url}</a
+                rel="noopener noreferrer"
               >
+                {event.targets[0].target_url}
+              </a>
             {:else}
               <span>{event.targets[0].target_url}</span>
             {/if}

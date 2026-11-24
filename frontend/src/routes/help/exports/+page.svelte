@@ -81,10 +81,10 @@
   </div>
 
   <div class="tools">
-    <span class="muted small"
-      >Steps checked against the vendors' help pages as of {GUIDES_VERIFIED}. Menus change — when in
-      doubt, follow the linked official article.</span
-    >
+    <span class="muted small">
+      Steps checked against the vendors' help pages as of {GUIDES_VERIFIED}. Menus change — when in
+      doubt, follow the linked official article.
+    </span>
     <span style="flex:1"></span>
     <button class="small" on:click={() => setAll(true)}>Expand all</button>
     <button class="small" on:click={() => setAll(false)}>Collapse all</button>
@@ -103,13 +103,13 @@
       <div class="body">
         <div class="links">
           {#if g.requestUrl}
-            <a class="ext primary" href={g.requestUrl} target="_blank" rel="noopener noreferrer"
-              >Open the request page ↗</a
-            >
+            <a class="ext primary" href={g.requestUrl} target="_blank" rel="noopener noreferrer">
+              Open the request page ↗
+            </a>
           {/if}
-          <a class="ext" href={g.helpUrl} target="_blank" rel="noopener noreferrer"
-            >Official help article ↗</a
-          >
+          <a class="ext" href={g.helpUrl} target="_blank" rel="noopener noreferrer">
+            Official help article ↗
+          </a>
         </div>
 
         <h3>Where to request it</h3>

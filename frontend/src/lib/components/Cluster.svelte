@@ -177,15 +177,16 @@
           <button class="lnk" on:click={() => load(!evs.length)}>retry</button>
         </div>
       {:else if next && remaining > 0}
-        <button class="fold" on:click={() => load(false)}
-          >▼ show {Math.min(PAGE, remaining).toLocaleString()} more · {remaining.toLocaleString()} remaining</button
-        >
+        <button class="fold" on:click={() => load(false)}>
+          ▼ show {Math.min(PAGE, remaining).toLocaleString()} more · {remaining.toLocaleString()} remaining
+        </button>
       {:else if !evs.length}
         <div class="state mono">no members match the current filters</div>
       {/if}
-      <button class="fold" on:click={toggle}
-        >▲ collapse {n.toLocaleString()} {noun(cluster.type, n)}</button
-      >
+      <button class="fold" on:click={toggle}>
+        ▲ collapse {n.toLocaleString()}
+        {noun(cluster.type, n)}
+      </button>
     </div>
   {/if}
 </div>

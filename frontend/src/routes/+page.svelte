@@ -408,8 +408,8 @@
             class="dimmer"
             title="high-volume consumption events (plays, watches, visits)"
           >
-            · {consumptionTotal.toLocaleString()} consumption</span
-          >{/if}
+            · {consumptionTotal.toLocaleString()} consumption
+          </span>{/if}
       </div>
 
       <RangeBar {days} from={filters.from} to={filters.to} on:range={onRange} />
