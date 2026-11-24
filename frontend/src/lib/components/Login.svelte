@@ -75,9 +75,9 @@
       placeholder="you@example.com"
       on:keydown={(e) => e.key === 'Enter' && submit()}
     />
-    <label for="auth-password"
-      >Password {#if mode === 'signup'}<span class="muted">(min 8 chars)</span>{/if}</label
-    >
+    <label for="auth-password">
+      Password {#if mode === 'signup'}<span class="muted">(min 8 chars)</span>{/if}
+    </label>
     <input
       id="auth-password"
       type="password"

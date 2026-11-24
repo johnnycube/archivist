@@ -336,9 +336,9 @@
         {#if menuOpen}
           <div class="menu" role="menu">
             {#each months as m (m.label)}
-              <button role="menuitem" class:on={m.label === currentMonth} on:click={() => jump(m)}
-                >{m.label}</button
-              >
+              <button role="menuitem" class:on={m.label === currentMonth} on:click={() => jump(m)}>
+                {m.label}
+              </button>
             {/each}
           </div>
         {/if}

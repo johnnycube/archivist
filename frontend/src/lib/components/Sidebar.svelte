@@ -130,12 +130,14 @@
               <span class="v">
                 {#if key === 'sources'}<i class="dot" style="background:{platform(f.value).color}"
                   ></i>{/if}{f.value}
-              </span><span class="c" class:cons={isConsumption(key, f.value) || hv}
-                >{f.count.toLocaleString()}{#if hv}<span
+              </span><span class="c" class:cons={isConsumption(key, f.value) || hv}>
+                {f.count.toLocaleString()}{#if hv}<span
                     class="hvmark"
-                    aria-label="high-volume {HV_NOUN[key]}">▲</span
-                  >{/if}</span
-              >
+                    aria-label="high-volume {HV_NOUN[key]}"
+                  >
+                    ▲
+                  </span>{/if}
+              </span>
             </div>
           {/each}
         </div>

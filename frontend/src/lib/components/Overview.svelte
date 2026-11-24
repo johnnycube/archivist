@@ -273,9 +273,9 @@
 {#if buckets.length}
   <section class="ov" aria-label="Archive overview: events over time by source">
     <div class="head">
-      <span class="mono muted"
-        >ARCHIVE · {domFrom} → {domTo} · peak {maxTotal.toLocaleString()} / {gran}</span
-      >
+      <span class="mono muted">
+        ARCHIVE · {domFrom} → {domTo} · peak {maxTotal.toLocaleString()} / {gran}
+      </span>
       {#if useLog}
         <span
           class="lgbadge mono"
@@ -293,8 +293,10 @@
             class:on={scaleMode === m}
             on:click={() => (scaleMode = m)}
             title={scaleTitle[m]}
-            aria-pressed={scaleMode === m}>{lbl}</button
+            aria-pressed={scaleMode === m}
           >
+            {lbl}
+          </button>
         {/each}
       </div>
     </div>
@@ -379,9 +381,9 @@
               {/if}
             </g>
             {#if i % tickEvery === 0}
-              <text x={i === 0 ? 2 : i * bw + bw / 2} y={H + 13} class="tick" class:first={i === 0}
-                >{labelOf(b.key, gran)}</text
-              >
+              <text x={i === 0 ? 2 : i * bw + bw / 2} y={H + 13} class="tick" class:first={i === 0}>
+                {labelOf(b.key, gran)}
+              </text>
             {/if}
           {/each}
           {#if dragging}
@@ -418,9 +420,9 @@
         <span class="lg"><i style="background:{chartColor(s)}"></i>{platform(s).label}</span>
       {/each}
       <span class="grow"></span>
-      <span class="mono muted hint"
-        >drag or click to narrow the range{useLog ? ' · rows share a log axis' : ''}</span
-      >
+      <span class="mono muted hint">
+        drag or click to narrow the range{useLog ? ' · rows share a log axis' : ''}
+      </span>
     </div>
   </section>
 {/if}

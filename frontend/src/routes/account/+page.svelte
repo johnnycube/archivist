@@ -201,8 +201,10 @@
       <button
         class="del"
         disabled={delBusy || (user.has_password && !delPw)}
-        on:click={deleteAccount}>Delete my account and all data</button
+        on:click={deleteAccount}
       >
+        Delete my account and all data
+      </button>
       {#if delErr}<div class="err">{delErr}</div>{/if}
     </div>
   </main>
