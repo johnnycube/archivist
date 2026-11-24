@@ -3,6 +3,5 @@
 # sits a few points under the measured value at adoption (83.9 %); raise it,
 # never lower it.
 profile: cover.out
-local-prefix: github.com/johnnycube/archivist
 threshold:
   total: 80
